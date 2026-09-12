@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entry Production | Creative & Community</title>
+  <meta name="description" content="Entry Production - クリエイティブとコミュニティを届けるプロダクション。Minecraftサーバー「ドル鯖」などを運営。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --neon: #3b82f6;
+      --neon-bright: #60a5fa;
+      --neon-glow: #2563eb;
+      --bg: #05070f;
+      --bg-card: #0b1120;
+      --bg-elevated: #111827;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: rgba(59, 130, 246, 0.25);
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== Background Effects ===== */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 500px; height: 500px; background: #1e40af; top: -150px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: #1d4ed8; bottom: 10%; right: -80px; }
+
+    /* ===== Layout ===== */
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      z-index: 100;
+      background: rgba(5, 7, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(1100px, 94%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-mark {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, #60a5fa, #3b82f6, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+      position: relative;
+    }
+
+    .logo-mark::before {
+      content: '←';
+      position: absolute;
+      left: -1.4em;
+      color: #3b82f6;
+      -webkit-text-fill-color: #3b82f6;
+      text-shadow: 0 0 12px #3b82f6;
+      font-size: 0.95em;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--neon-bright); }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 70px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--neon-bright);
+      font-weight: 600;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 30%, #60a5fa 70%, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: #fff;
+      box-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--neon);
+      color: var(--neon-bright);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      color: var(--neon);
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .section-lead {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* ===== About ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--neon-bright);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Projects ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    }
+
+    .project-visual {
+      height: 160px;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(59,130,246,0.3), transparent 60%);
+    }
+
+    .project-icon {
+      font-size: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-body {
+      padding: 28px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--neon);
+      background: rgba(59, 130, 246, 0.12);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--neon-bright);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    /* ===== Features ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.25s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: var(--neon-bright);
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.8));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .cta-lead {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--neon-bright);
+      margin-bottom: 8px;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .menu-btn { display: flex; align-items: center; justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero { min-height: 90vh; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">Entry Production</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-label">Creative Production</div>
+        <h1 class="hero-title">Entry<br>Production</h1>
+        <p class="hero-sub">
+          クリエイティブとコミュニティをつなぐ。<br>
+          私たちは「Entry」から始まる新しい体験を届けます。
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
+          <a href="#contact" class="btn btn-ghost">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">私たちについて</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Entry Production は、ゲームコミュニティやクリエイティブな空間を企画・運営するプロダクションです。
+          </p>
+          <p>
+            「誰もが気軽に入れる場所」を大切にしながら、安心して楽しめる環境づくりを続けています。
+            建築・冒険・交流を軸に、プレイヤー同士のつながりを育む場を提供しています。
+          </p>
+          <p>
+            ロゴに込めた矢印は「次のステージへ進む」意志を表しています。
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-num">2024</div>
+            <div class="stat-label">設立年</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">1+</div>
+            <div class="stat-label">主要プロジェクト</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">コミュニティ運営</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">JP</div>
+            <div class="stat-label">メイン言語</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">プロジェクト</h2>
+      <p class="section-lead">Entry Production が手がける主な取り組みです。</p>
+
+      <div class="projects-grid">
+        <!-- Project 1: DolSaba -->
+        <article class="project-card">
+          <div class="project-visual">
+            <span class="project-icon">⛏️</span>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">MINECRAFT</span>
+            <h3 class="project-title">DOLDO SERVER【ドル鯖】</h3>
+            <p class="project-desc">
+              Minecraft 統合版の参加型サバイバルサーバー。フレンド申請だけで気軽に参加でき、民度を大切にした安心のコミュニティです。
+            </p>
+            <a href="https://plsjoin.github.io/DolSaba/index.html" target="_blank" rel="noopener" class="project-link">
+              公式サイトを見る →
+            </a>
+          </div>
+        </article>
+
+        <!-- Placeholder for future projects -->
+        <article class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #0f172a, #312e81);">
+            <span class="project-icon">🚀</span>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">COMING SOON</span>
+            <h3 class="project-title">Next Project</h3>
+            <p class="project-desc">
+              新しいプロジェクトを準備中です。Entry Production はこれからも「入る」体験を広げていきます。
+            </p>
+            <span class="project-link" style="color: var(--text-muted); cursor: default;">Coming Soon</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label">Values</div>
+      <h2 class="section-title">大切にしていること</h2>
+      <p class="section-lead">Entry Production の活動の根底にある価値観です。</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚪</div>
+          <h3>気軽に入れる</h3>
+          <p>難しい設定や手続きを減らし、誰でもすぐに参加できる環境を目指します。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>安心できる場</h3>
+          <p>荒らしや迷惑行為を排除し、民度の高いコミュニティを維持します。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h3>自分のペース</h3>
+          <p>急かされることなく、建築や探索を自分のリズムで楽しめます。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>つながりを育む</h3>
+          <p>イベントや交流を通じて、プレイヤー同士の関係を大切にします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2 class="cta-title">一緒に始めよう</h2>
+        <p class="cta-lead">
+          質問や参加の相談は、LINEオープンチャットへどうぞ。<br>
+          気軽にお声がけください。
+        </p>
+        <div class="hero-btns" style="justify-content: center;">
+          <a href="https://line.me/ti/g2/m-35LWaRXXRocL6XmN3Xq7jRrvnJWPI-figSOQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" 
+             target="_blank" rel="noopener" class="btn btn-primary">
+            LINEオープンチャットに参加
+          </a>
+          <a href="https://plsjoin.github.io/DolSaba/join.html" target="_blank" rel="noopener" class="btn btn-ghost">
+            ドル鯖の参加方法
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">← Entry Production</div>
+      <p class="footer-copy">© 2024–2026 Entry Production. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle (placeholder)
+    document.querySelector('.menu-btn')?.addEventListener('click', () => {
+      alert('モバイルメニューは必要に応じて追加できます');
+    });
+  </script>
+</body>
+</html>
