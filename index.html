@@ -3,83 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entry Production | Creative & Community</title>
-  <meta name="description" content="Entry Production - クリエイティブとコミュニティを届けるプロダクション。Minecraftサーバー「ドル鯖」などを運営。">
+  <title>Entry Production | 公式サイト</title>
+  <meta name="description" content="Entry Production（エントリープロダクション / エンプロ）- クリエイティブとコミュニティを軸に多様な事業を展開するプロダクション">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --neon: #3b82f6;
-      --neon-bright: #60a5fa;
-      --neon-glow: #2563eb;
-      --bg: #05070f;
-      --bg-card: #0b1120;
-      --bg-elevated: #111827;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: rgba(59, 130, 246, 0.25);
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --blue-pale: #eff6ff;
+      --blue-soft: #dbeafe;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --border: #e2e8f0;
       --radius: 12px;
+      --shadow: 0 4px 24px rgba(37, 99, 235, 0.07);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.8;
       overflow-x: hidden;
     }
 
-    /* ===== Background Effects ===== */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .glow-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .orb-1 { width: 500px; height: 500px; background: #1e40af; top: -150px; left: -100px; }
-    .orb-2 { width: 400px; height: 400px; background: #1d4ed8; bottom: 10%; right: -80px; }
-
-    /* ===== Layout ===== */
     .container {
-      width: min(1100px, 92%);
+      width: min(1080px, 92%);
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
 
-    /* ===== Header ===== */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
-      height: 70px;
+      height: 76px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
       display: flex;
       align-items: center;
-      z-index: 100;
-      background: rgba(5, 7, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      width: min(1100px, 94%);
+      width: min(1080px, 94%);
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -89,367 +63,372 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       text-decoration: none;
-      color: var(--text);
     }
 
-    .logo-mark {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
-      font-size: 1.35rem;
-      letter-spacing: 0.04em;
-      background: linear-gradient(90deg, #60a5fa, #3b82f6, #93c5fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-      position: relative;
+    .logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
     }
 
-    .logo-mark::before {
-      content: '←';
-      position: absolute;
-      left: -1.4em;
-      color: #3b82f6;
-      -webkit-text-fill-color: #3b82f6;
-      text-shadow: 0 0 12px #3b82f6;
-      font-size: 0.95em;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-    }
+    nav { display: flex; gap: 32px; }
 
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 500;
       transition: color 0.2s;
     }
 
-    nav a:hover { color: var(--neon-bright); }
+    nav a:hover { color: var(--blue); }
 
     .menu-btn {
       display: none;
       background: none;
       border: 1px solid var(--border);
-      color: var(--text);
-      width: 42px;
-      height: 42px;
+      width: 40px; height: 40px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      color: var(--text);
     }
 
-    /* ===== Hero ===== */
     .hero {
-      min-height: 100vh;
+      min-height: 86vh;
       display: flex;
       align-items: center;
-      padding-top: 70px;
+      padding-top: 76px;
+      background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 65%);
       position: relative;
+      overflow: hidden;
     }
 
-    .hero-content {
-      max-width: 720px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -15%; right: -8%;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .hero-label {
+    .hero-content { position: relative; z-index: 1; max-width: 640px; }
+
+    .hero-badge {
       display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      color: var(--neon-bright);
-      font-weight: 600;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
       margin-bottom: 18px;
-      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     .hero-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.6rem, 7vw, 4.2rem);
-      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 3.8rem);
+      font-weight: 800;
       line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span { color: var(--blue); }
+
+    .hero-names {
+      font-size: 0.95rem;
+      color: var(--text-muted);
       margin-bottom: 20px;
-      background: linear-gradient(135deg, #fff 30%, #60a5fa 70%, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 500;
     }
 
     .hero-sub {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      margin-bottom: 36px;
-      max-width: 520px;
+      margin-bottom: 34px;
+      max-width: 480px;
     }
 
-    .hero-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 28px;
+      padding: 12px 26px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       text-decoration: none;
       transition: all 0.25s;
-      cursor: pointer;
       border: none;
+      cursor: pointer;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      background: var(--blue);
       color: #fff;
-      box-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
     }
 
     .btn-primary:hover {
+      background: #1d4ed8;
       transform: translateY(-2px);
-      box-shadow: 0 0 36px rgba(59, 130, 246, 0.6);
     }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .btn-outline {
+      background: #fff;
+      color: var(--blue);
+      border: 1.5px solid var(--blue-soft);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--neon);
-      color: var(--neon-bright);
+    .btn-outline:hover {
+      border-color: var(--blue);
+      background: var(--blue-pale);
     }
 
-    /* ===== Sections ===== */
-    section {
-      padding: 100px 0;
-      position: relative;
-      z-index: 1;
-    }
+    section { padding: 96px 0; }
 
     .section-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      color: var(--neon);
-      font-weight: 600;
-      margin-bottom: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      margin-bottom: 10px;
       text-transform: uppercase;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.65rem, 3.2vw, 2.15rem);
       font-weight: 900;
-      margin-bottom: 16px;
-      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
     }
 
     .section-lead {
       color: var(--text-muted);
       max-width: 560px;
       margin-bottom: 48px;
+      font-size: 0.98rem;
     }
 
-    /* ===== About ===== */
+    .about { background: var(--bg-soft); }
+
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px;
+      align-items: start;
     }
 
     .about-text p {
       color: var(--text-muted);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+
+    .about-names {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 24px;
+    }
+
+    .about-names h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .about-names ul {
+      list-style: none;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .about-names li { padding: 4px 0; }
+
+    .about-names strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     .stat-card {
-      background: var(--bg-card);
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px 18px;
       text-align: center;
+      box-shadow: var(--shadow);
     }
 
     .stat-num {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--neon-bright);
-      margin-bottom: 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 2px;
     }
 
     .stat-label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
-    /* ===== Projects ===== */
-    .projects-grid {
+    .business-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .business-card {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 120px 1fr auto;
       gap: 24px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
+      align-items: center;
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
 
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    .business-card:hover {
+      border-color: var(--blue-soft);
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.1);
     }
 
-    .project-visual {
-      height: 160px;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    .business-icon {
+      width: 100%;
+      height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #dbeafe, #93c5fd);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
+      font-size: 2.2rem;
     }
 
-    .project-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 70% 30%, rgba(59,130,246,0.3), transparent 60%);
+    .business-icon.dict {
+      background: linear-gradient(135deg, #e0f2fe, #7dd3fc);
     }
 
-    .project-icon {
-      font-size: 3.5rem;
-      position: relative;
-      z-index: 1;
+    .business-icon.soon {
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
     }
 
-    .project-body {
-      padding: 28px;
-    }
-
-    .project-tag {
+    .business-tag {
       display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--neon);
-      background: rgba(59, 130, 246, 0.12);
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .project-title {
-      font-size: 1.25rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      color: var(--blue);
+      background: var(--blue-pale);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
     }
 
-    .project-desc {
-      font-size: 0.92rem;
+    .business-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .business-desc {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      line-height: 1.7;
     }
 
-    .project-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--neon-bright);
+    .business-link {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--blue);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      white-space: nowrap;
+      padding: 8px 16px;
+      border: 1.5px solid var(--blue-soft);
+      border-radius: 999px;
+      transition: all 0.2s;
     }
 
-    .project-link:hover { text-decoration: underline; }
+    .business-link:hover {
+      background: var(--blue-pale);
+      border-color: var(--blue);
+    }
 
-    /* ===== Features ===== */
-    .features-grid {
+    .philosophy { background: var(--bg-soft); }
+
+    .philo-intro {
+      max-width: 640px;
+      margin-bottom: 40px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .philo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
-    .feature-card {
-      background: var(--bg-card);
+    .philo-card {
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 28px 24px;
       transition: border-color 0.25s;
     }
 
-    .feature-card:hover {
-      border-color: rgba(59, 130, 246, 0.5);
+    .philo-card:hover { border-color: var(--blue-soft); }
+
+    .philo-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
     }
 
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(59, 130, 246, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-      color: var(--neon-bright);
-    }
-
-    .feature-card h3 {
+    .philo-card h3 {
       font-size: 1.05rem;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .feature-card p {
+    .philo-card p {
       font-size: 0.88rem;
       color: var(--text-muted);
     }
 
-    /* ===== CTA ===== */
-    .cta {
-      text-align: center;
-      padding: 80px 0;
-    }
+    .cta { text-align: center; }
 
     .cta-box {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.8));
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
       border-radius: 20px;
       padding: 56px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
-      pointer-events: none;
+      border: 1px solid var(--blue-soft);
     }
 
     .cta-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-size: clamp(1.45rem, 2.8vw, 1.9rem);
       font-weight: 900;
       margin-bottom: 12px;
     }
@@ -457,229 +436,232 @@
     .cta-lead {
       color: var(--text-muted);
       margin-bottom: 28px;
+      font-size: 0.98rem;
     }
 
-    /* ===== Footer ===== */
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 0 30px;
+      padding: 40px 0 32px;
       text-align: center;
-      position: relative;
-      z-index: 1;
     }
 
     .footer-logo {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--neon-bright);
-      margin-bottom: 8px;
+      height: 36px;
+      margin: 0 auto 10px;
+      display: block;
     }
 
     .footer-copy {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    /* ===== Mobile ===== */
     @media (max-width: 768px) {
       nav { display: none; }
       .menu-btn { display: flex; align-items: center; justify-content: center; }
       .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      .hero { min-height: 90vh; }
-      .stats { grid-template-columns: 1fr 1fr; }
+      .hero { min-height: 80vh; }
+      .logo img { height: 40px; }
+      .business-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 22px;
+      }
+      .business-icon { height: 72px; }
+      .business-link { justify-self: start; }
+      .cta-box { padding: 40px 24px; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
 
-  <!-- Header -->
   <header>
     <div class="header-inner">
       <a href="#" class="logo">
-        <span class="logo-mark">Entry Production</span>
+        <img src="main.png" alt="Entry Production">
       </a>
       <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">会社概要</a>
+        <a href="#business">展開事業</a>
+        <a href="#philosophy">企業理念</a>
+        <a href="#contact">お問い合わせ</a>
       </nav>
       <button class="menu-btn" aria-label="Menu">☰</button>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-label">Creative Production</div>
-        <h1 class="hero-title">Entry<br>Production</h1>
+        <div class="hero-badge">CREATIVE PRODUCTION</div>
+        <h1 class="hero-title">Entry<br><span>Production</span></h1>
+        <p class="hero-names">エントリープロダクション / エンプロ</p>
         <p class="hero-sub">
-          クリエイティブとコミュニティをつなぐ。<br>
-          私たちは「Entry」から始まる新しい体験を届けます。
+          クリエイティブとコミュニティを軸に、<br>
+          多様な事業を展開するプロダクションです。
         </p>
         <div class="hero-btns">
-          <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
-          <a href="#contact" class="btn btn-ghost">お問い合わせ</a>
+          <a href="#business" class="btn btn-primary">展開事業を見る</a>
+          <a href="#contact" class="btn btn-outline">お問い合わせ</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
+  <section id="about" class="about">
     <div class="container">
-      <div class="section-label">About Us</div>
-      <h2 class="section-title">私たちについて</h2>
+      <div class="section-label">Company</div>
+      <h2 class="section-title">Entry Production について</h2>
       <div class="about-grid">
         <div class="about-text">
           <p>
-            Entry Production は、ゲームコミュニティやクリエイティブな空間を企画・運営するプロダクションです。
+            Entry Production（エントリープロダクション / 通称：エンプロ）は、ゲームコミュニティやWebサービスをはじめとするクリエイティブ領域において、企画・運営・展開を行うプロダクションです。
           </p>
           <p>
-            「誰もが気軽に入れる場所」を大切にしながら、安心して楽しめる環境づくりを続けています。
-            建築・冒険・交流を軸に、プレイヤー同士のつながりを育む場を提供しています。
+            「誰もが気軽に入れる場所をつくる」ことを基本方針とし、安心・安全で質の高い体験の提供を目指しています。Minecraftサーバー「ドル鯖」や、簡単辞典「簡辞」など、ユーザーに寄り添ったサービスを展開しています。
           </p>
           <p>
-            ロゴに込めた矢印は「次のステージへ進む」意志を表しています。
+            ロゴに用いている矢印は、「次のステージへ進む」という当社の意志を象徴しています。
           </p>
+
+          <div class="about-names">
+            <h4>名称について</h4>
+            <ul>
+              <li><strong>正式名称</strong>：Entry Production</li>
+              <li><strong>日本語表記</strong>：エントリープロダクション</li>
+              <li><strong>通称</strong>：エンプロ</li>
+            </ul>
+          </div>
         </div>
         <div class="stats">
           <div class="stat-card">
             <div class="stat-num">2024</div>
-            <div class="stat-label">設立年</div>
+            <div class="stat-label">設立</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">1+</div>
-            <div class="stat-label">主要プロジェクト</div>
+            <div class="stat-num">2+</div>
+            <div class="stat-label">展開事業</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">24/7</div>
-            <div class="stat-label">コミュニティ運営</div>
+            <div class="stat-num">24h</div>
+            <div class="stat-label">サービス運営</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">JP</div>
-            <div class="stat-label">メイン言語</div>
+            <div class="stat-label">メイン市場</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
+  <section id="business">
     <div class="container">
-      <div class="section-label">Projects</div>
-      <h2 class="section-title">プロジェクト</h2>
-      <p class="section-lead">Entry Production が手がける主な取り組みです。</p>
+      <div class="section-label">Business</div>
+      <h2 class="section-title">展開事業</h2>
+      <p class="section-lead">
+        Entry Production が現在展開している主な事業です。今後さらに事業領域を広げてまいります。
+      </p>
 
-      <div class="projects-grid">
-        <!-- Project 1: DolSaba -->
-        <article class="project-card">
-          <div class="project-visual">
-            <span class="project-icon">⛏️</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">MINECRAFT</span>
-            <h3 class="project-title">DOLDO SERVER【ドル鯖】</h3>
-            <p class="project-desc">
-              Minecraft 統合版の参加型サバイバルサーバー。フレンド申請だけで気軽に参加でき、民度を大切にした安心のコミュニティです。
+      <div class="business-list">
+        <article class="business-card">
+          <div class="business-icon">⛏️</div>
+          <div>
+            <span class="business-tag">ゲームコミュニティ事業</span>
+            <h3 class="business-title">DOLDO SERVER（ドル鯖）</h3>
+            <p class="business-desc">
+              Minecraft 統合版を対象とした参加型サバイバルサーバー。フレンド申請のみで参加可能な設計により、幅広いユーザーが安心して建築・冒険・交流を楽しめる環境を提供しています。
             </p>
-            <a href="https://plsjoin.github.io/DolSaba/index.html" target="_blank" rel="noopener" class="project-link">
-              公式サイトを見る →
-            </a>
           </div>
+          <a href="https://plsjoin.github.io/DolSaba/index.html" target="_blank" rel="noopener" class="business-link">詳細を見る</a>
         </article>
 
-        <!-- Placeholder for future projects -->
-        <article class="project-card">
-          <div class="project-visual" style="background: linear-gradient(135deg, #0f172a, #312e81);">
-            <span class="project-icon">🚀</span>
-          </div>
-          <div class="project-body">
-            <span class="project-tag">COMING SOON</span>
-            <h3 class="project-title">Next Project</h3>
-            <p class="project-desc">
-              新しいプロジェクトを準備中です。Entry Production はこれからも「入る」体験を広げていきます。
+        <article class="business-card">
+          <div class="business-icon dict">📖</div>
+          <div>
+            <span class="business-tag">Webサービス事業</span>
+            <h3 class="business-title">簡辞（かんじ）｜Easy Web Dictionary</h3>
+            <p class="business-desc">
+              知りたい単語だけを素早く調べられる、シンプルなWeb辞典。わかりやすく短い説明で、すぐに意味がわかることを目指したサービスです。
             </p>
-            <span class="project-link" style="color: var(--text-muted); cursor: default;">Coming Soon</span>
           </div>
+          <a href="https://plsjoin.github.io/Dic/" target="_blank" rel="noopener" class="business-link">詳細を見る</a>
+        </article>
+
+        <article class="business-card">
+          <div class="business-icon soon">🚀</div>
+          <div>
+            <span class="business-tag">新規事業</span>
+            <h3 class="business-title">Next Project</h3>
+            <p class="business-desc">
+              現在、新たな事業の企画・準備を進めております。詳細が決まり次第、本ページにてお知らせいたします。
+            </p>
+          </div>
+          <span class="business-link" style="color: var(--text-muted); border-color: var(--border); cursor: default;">Coming Soon</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features">
+  <section id="philosophy" class="philosophy">
     <div class="container">
-      <div class="section-label">Values</div>
-      <h2 class="section-title">大切にしていること</h2>
-      <p class="section-lead">Entry Production の活動の根底にある価値観です。</p>
+      <div class="section-label">Philosophy</div>
+      <h2 class="section-title">企業理念</h2>
+      <p class="philo-intro">
+        Entry Production（エンプロ）は、「Entry（入る）」という言葉に込められた意味を大切にしています。誰もが気軽に足を踏み入れられる場所をつくり、そこから新しい体験やつながりが生まれることを目指しています。
+      </p>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🚪</div>
+      <div class="philo-grid">
+        <div class="philo-card">
+          <div class="philo-num">01</div>
           <h3>気軽に入れる</h3>
-          <p>難しい設定や手続きを減らし、誰でもすぐに参加できる環境を目指します。</p>
+          <p>複雑な手続きを可能な限り排除し、誰もがすぐに参加・利用できる環境づくりを重視します。</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
+        <div class="philo-card">
+          <div class="philo-num">02</div>
           <h3>安心できる場</h3>
-          <p>荒らしや迷惑行為を排除し、民度の高いコミュニティを維持します。</p>
+          <p>迷惑行為を排除し、健全で質の高いサービス・コミュニティを維持することを最優先とします。</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏗️</div>
+        <div class="philo-card">
+          <div class="philo-num">03</div>
           <h3>自分のペース</h3>
-          <p>急かされることなく、建築や探索を自分のリズムで楽しめます。</p>
+          <p>利用者一人ひとりのペースを尊重し、強制のない自由な体験を提供します。</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🤝</div>
+        <div class="philo-card">
+          <div class="philo-num">04</div>
           <h3>つながりを育む</h3>
-          <p>イベントや交流を通じて、プレイヤー同士の関係を大切にします。</p>
+          <p>単なるサービス提供にとどまらず、利用者同士の良好な関係や体験の広がりを支援します。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / Contact -->
   <section id="contact" class="cta">
     <div class="container">
       <div class="cta-box">
-        <h2 class="cta-title">一緒に始めよう</h2>
+        <h2 class="cta-title">お問い合わせ</h2>
         <p class="cta-lead">
-          質問や参加の相談は、LINEオープンチャットへどうぞ。<br>
-          気軽にお声がけください。
+          事業に関するご質問・ご相談は、LINEオープンチャットよりお気軽にお問い合わせください。
         </p>
         <div class="hero-btns" style="justify-content: center;">
           <a href="https://line.me/ti/g2/m-35LWaRXXRocL6XmN3Xq7jRrvnJWPI-figSOQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" 
              target="_blank" rel="noopener" class="btn btn-primary">
-            LINEオープンチャットに参加
+            LINEオープンチャット
           </a>
-          <a href="https://plsjoin.github.io/DolSaba/join.html" target="_blank" rel="noopener" class="btn btn-ghost">
-            ドル鯖の参加方法
+          <a href="https://plsjoin.github.io/DolSaba/join.html" target="_blank" rel="noopener" class="btn btn-outline">
+            ドル鯖 参加方法
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-logo">← Entry Production</div>
-      <p class="footer-copy">© 2024–2026 Entry Production. All rights reserved.</p>
+      <img src="main.png" alt="Entry Production" class="footer-logo">
+      <p class="footer-copy">© 2024–2026 Entry Production（エントリープロダクション / エンプロ）. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    // Simple mobile menu toggle (placeholder)
-    document.querySelector('.menu-btn')?.addEventListener('click', () => {
-      alert('モバイルメニューは必要に応じて追加できます');
-    });
-  </script>
 </body>
 </html>
