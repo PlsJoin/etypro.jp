@@ -3,91 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entry Production | サイト</title>
-  <meta name="description" content="Entry Production（エントリープロダクション / エンプロ）- クリエイティブとコミュニティを軸に多様な事業を展開するプロダクション">
+  <title>Entry Production | エンプロ</title>
+  <meta name="description" content="Entry Production（エンプロ）は「誰もがクリエイティブになれる」を理念に、ゲームコミュニティやWebサービスを企画・運営するクリエイティブプロダクションです。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #0b0b12;
-      --bg-card: #12121c;
-      --bg-soft: #161622;
-      --text: #f1f0f7;
-      --text-muted: #9b97b0;
-      --accent: #8b5cf6;
-      --accent2: #6366f1;
-      --accent3: #a78bfa;
-      --border: rgba(255,255,255,0.08);
-      --radius: 20px;
-      --glow: 0 0 40px rgba(139, 92, 246, 0.25);
+      --blue: #1e90ff;
+      --blue-bright: #3ba3ff;
+      --blue-glow: #00b4ff;
+      --aqua: #7ee8fa;
+      --aqua-dim: rgba(126, 232, 250, 0.12);
+      --dark: #050b14;
+      --dark-2: #0a1628;
+      --dark-3: #0f1f35;
+      --text: #e8f4ff;
+      --text-muted: #8ba4c0;
+      --card-bg: rgba(15, 31, 53, 0.65);
+      --border: rgba(59, 163, 255, 0.25);
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--dark);
       color: var(--text);
-      line-height: 1.75;
+      line-height: 1.7;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
+    /* ===== Background: castle atmosphere + aqua tint + pattern ===== */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(30, 144, 255, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 80% 60%, rgba(0, 180, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 15% 80%, rgba(126, 232, 250, 0.06) 0%, transparent 45%),
+        linear-gradient(180deg, #050b14 0%, #0a1628 40%, #07101c 100%);
+    }
+
+    /* Subtle geometric pattern (castle / creative motif) */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.07;
+      background-image:
+        linear-gradient(30deg, transparent 40%, rgba(59, 163, 255, 0.4) 40%, rgba(59, 163, 255, 0.4) 41%, transparent 41%),
+        linear-gradient(-30deg, transparent 40%, rgba(126, 232, 250, 0.3) 40%, rgba(126, 232, 250, 0.3) 41%, transparent 41%),
+        linear-gradient(90deg, transparent 49%, rgba(30, 144, 255, 0.25) 49%, rgba(30, 144, 255, 0.25) 51%, transparent 51%);
+      background-size: 80px 140px, 80px 140px, 120px 120px;
+      pointer-events: none;
+    }
+
+    /* Soft vignette for depth (castle-like atmosphere) */
+    .bg-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 11, 20, 0.7) 100%);
+      pointer-events: none;
+    }
+
+    /* ===== Typography ===== */
+    h1, h2, h3 {
+      font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== Layout helpers ===== */
     .container {
-      width: min(1100px, 92%);
+      width: 100%;
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
     }
 
     /* ===== Header ===== */
     header {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 70px;
-      background: rgba(11, 11, 18, 0.75);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
+      padding: 18px 0;
+      background: rgba(5, 11, 20, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
     }
 
     .header-inner {
-      width: min(1100px, 94%);
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo img {
-      height: 42px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-      filter: brightness(1.1);
-    }
-
-    .menu-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 1.15rem;
-      cursor: pointer;
+    .logo-link {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: all 0.25s;
+      text-decoration: none;
     }
 
-    .menu-btn:hover {
-      background: rgba(139, 92, 246, 0.2);
-      border-color: rgba(139, 92, 246, 0.4);
+    .logo-link img {
+      height: 36px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(30, 144, 255, 0.5));
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.25s;
+    }
+
+    nav a:hover {
+      color: var(--aqua);
     }
 
     /* ===== Hero ===== */
@@ -95,687 +153,528 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 70px;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    .hero-logo {
+      width: min(560px, 90vw);
+      height: auto;
+      margin-bottom: 40px;
+      filter: drop-shadow(0 0 30px rgba(30, 144, 255, 0.45));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 18px;
+      letter-spacing: 0.06em;
+      text-shadow: 0 0 40px rgba(30, 144, 255, 0.4);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 520px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      animation: bounce 2.2s infinite;
+    }
+
+    .scroll-hint span {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--blue-bright), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ===== Section titles ===== */
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 580px;
+      font-size: 1.02rem;
+    }
+
+    /* ===== About ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .about-text p strong {
+      color: var(--aqua);
+      font-weight: 600;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      backdrop-filter: blur(8px);
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
+    .about-card::before {
       content: '';
       position: absolute;
-      top: -30%;
-      right: -15%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--aqua));
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 640px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(139, 92, 246, 0.15);
-      color: var(--accent3);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 7px 16px;
-      border-radius: 999px;
-      margin-bottom: 28px;
-      letter-spacing: 0.12em;
-      border: 1px solid rgba(139, 92, 246, 0.25);
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent3);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent3);
-    }
-
-    .hero-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(3.2rem, 8vw, 5.2rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, #a78bfa, #818cf8, #c4b5fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-names {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-sub {
-      font-size: 1.08rem;
-      color: var(--text-muted);
-      margin-bottom: 48px;
-      max-width: 460px;
-      line-height: 1.9;
-    }
-
-    .hero-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 15px 30px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    .about-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 14px;
       color: #fff;
-      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 40px rgba(139, 92, 246, 0.45);
-    }
-
-    .btn-outline {
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border: 1.5px solid rgba(255,255,255,0.15);
-    }
-
-    .btn-outline:hover {
-      background: rgba(139, 92, 246, 0.12);
-      border-color: rgba(139, 92, 246, 0.4);
-    }
-
-    /* ===== Sections ===== */
-    section {
-      padding: 120px 0;
-      position: relative;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--accent3);
-      margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-size: clamp(1.9rem, 4vw, 2.6rem);
-      font-weight: 900;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-lead {
+    .about-card p {
       color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 60px;
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-
-    /* About */
-    .about {
-      background: linear-gradient(180deg, #0b0b12 0%, #0f0f18 100%);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.6fr;
-      gap: 70px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text-muted);
-      margin-bottom: 22px;
-      font-size: 1rem;
-      line-height: 1.95;
-    }
-
-    .about-names {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 28px;
-      margin-top: 36px;
-    }
-
-    .about-names h4 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent3);
-      margin-bottom: 14px;
-      letter-spacing: 0.06em;
-    }
-
-    .about-names ul {
-      list-style: none;
       font-size: 0.95rem;
+    }
+
+    .name-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .name-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(59, 163, 255, 0.12);
+      font-size: 0.92rem;
+    }
+
+    .name-list li span:first-child {
       color: var(--text-muted);
     }
 
-    .about-names li {
-      padding: 6px 0;
-    }
-
-    .about-names strong {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px 16px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .stat-card:hover {
-      border-color: rgba(139, 92, 246, 0.35);
-      transform: translateY(-4px);
-      box-shadow: var(--glow);
-    }
-
-    .stat-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(120deg, #a78bfa, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .name-list li span:last-child {
+      color: var(--aqua);
       font-weight: 500;
     }
 
-    /* Business */
-    .business-list {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-
-    .business-card {
-      display: grid;
-      grid-template-columns: 90px 1fr auto;
-      gap: 28px;
-      align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 30px 32px;
-      transition: all 0.35s ease;
-    }
-
-    .business-card:hover {
-      border-color: rgba(139, 92, 246, 0.35);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.3), var(--glow);
-    }
-
-    .business-icon {
-      width: 90px;
-      height: 90px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.15));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      border: 1px solid rgba(139, 92, 246, 0.2);
-    }
-
-    .business-icon.dict {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
-    }
-
-    .business-icon.soon {
-      background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(139, 92, 246, 0.15));
-    }
-
-    .business-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--accent3);
-      background: rgba(139, 92, 246, 0.12);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-
-    .business-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .business-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .business-link {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent3);
-      text-decoration: none;
-      white-space: nowrap;
-      padding: 11px 20px;
-      border: 1.5px solid rgba(139, 92, 246, 0.3);
-      border-radius: 999px;
-      transition: all 0.25s;
-    }
-
-    .business-link:hover {
-      background: rgba(139, 92, 246, 0.15);
-      border-color: var(--accent3);
-    }
-
-    /* Philosophy */
+    /* ===== Philosophy ===== */
     .philosophy {
-      background: linear-gradient(180deg, #0f0f18 0%, #0b0b12 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.6) 50%, transparent 100%);
     }
 
-    .philo-intro {
-      max-width: 620px;
-      margin-bottom: 52px;
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.95;
-    }
-
-    .philo-grid {
+    .philosophy-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 50px;
     }
 
     .philo-card {
-      background: var(--bg-card);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 24px;
-      transition: all 0.3s;
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
 
     .philo-card:hover {
-      border-color: rgba(139, 92, 246, 0.3);
-      transform: translateY(-4px);
-      box-shadow: var(--glow);
+      transform: translateY(-6px);
+      border-color: rgba(59, 163, 255, 0.5);
+      box-shadow: 0 12px 40px rgba(30, 144, 255, 0.15);
     }
 
     .philo-num {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent3);
-      margin-bottom: 16px;
-      letter-spacing: 0.08em;
-    }
-
-    .philo-card h3 {
-      font-size: 1.1rem;
+      font-size: 2.4rem;
       font-weight: 800;
+      color: rgba(59, 163, 255, 0.25);
+      line-height: 1;
       margin-bottom: 12px;
     }
 
+    .philo-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
     .philo-card p {
-      font-size: 0.9rem;
       color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ===== Services ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(30, 144, 255, 0.18);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(30, 144, 255, 0.25), rgba(126, 232, 250, 0.15));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+    }
+
+    .service-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--blue-bright);
+      background: rgba(30, 144, 255, 0.12);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
       line-height: 1.8;
     }
 
-    /* CTA */
-    .cta {
-      text-align: center;
-      padding-bottom: 140px;
+    .owned-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--aqua);
+      font-weight: 500;
     }
 
-    .cta-box {
-      background: linear-gradient(145deg, rgba(139, 92, 246, 0.12), rgba(99, 102, 241, 0.08));
-      border-radius: 28px;
-      padding: 72px 48px;
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
+    .owned-badge::before {
       content: '';
-      position: absolute;
-      top: -40%;
-      right: -15%;
-      width: 360px;
-      height: 360px;
-      background: radial-gradient(circle, rgba(167, 139, 250, 0.2) 0%, transparent 70%);
-      pointer-events: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--aqua);
+      box-shadow: 0 0 8px var(--aqua);
     }
 
-    .cta-title {
-      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
-      font-weight: 900;
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .cta-lead {
-      color: var(--text-muted);
-      margin-bottom: 36px;
-      font-size: 1rem;
-      position: relative;
-    }
-
-    /* Footer */
+    /* ===== Footer ===== */
     footer {
+      padding: 50px 0 40px;
       border-top: 1px solid var(--border);
-      padding: 52px 0 44px;
       text-align: center;
     }
 
     .footer-logo {
-      height: 32px;
-      margin: 0 auto 16px;
-      display: block;
-      opacity: 0.7;
+      height: 28px;
+      margin-bottom: 16px;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 6px rgba(30, 144, 255, 0.4));
     }
 
-    .footer-copy {
-      font-size: 0.78rem;
+    .footer-text {
       color: var(--text-muted);
-      letter-spacing: 0.03em;
+      font-size: 0.85rem;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .philo-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    .footer-text span {
+      color: var(--blue-bright);
     }
 
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .hero {
-        min-height: 92vh;
-      }
-
-      .logo img {
-        height: 38px;
-      }
-
-      .business-card {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 26px;
-      }
-
-      .business-icon {
-        width: 72px;
-        height: 72px;
-        font-size: 1.9rem;
-      }
-
-      .business-link {
-        justify-self: start;
-      }
-
-      .philo-grid {
+    /* ===== Responsive ===== */
+    @media (max-width: 860px) {
+      .about-grid,
+      .philosophy-grid,
+      .services-grid {
         grid-template-columns: 1fr;
       }
 
-      .cta-box {
-        padding: 52px 28px;
+      nav {
+        display: none;
       }
 
       section {
-        padding: 90px 0;
+        padding: 70px 0;
+      }
+
+      .hero-logo {
+        margin-bottom: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .philo-card,
+      .service-card,
+      .about-card {
+        padding: 28px 22px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="bg-layer"></div>
+  <div class="bg-pattern"></div>
+  <div class="bg-vignette"></div>
 
+  <!-- Header -->
   <header>
-    <div class="header-inner">
-      <a href="#" class="logo">
+    <div class="container header-inner">
+      <a href="#" class="logo-link">
         <img src="main.png" alt="Entry Production">
       </a>
-      <button class="menu-btn" aria-label="Menu">☰</button>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#services">Services</a>
+      </nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">CREATIVE PRODUCTION</div>
-        <h1 class="hero-title">Entry<br><span>Production</span></h1>
-        <p class="hero-names">エントリープロダクション / エンプロ</p>
-        <p class="hero-sub">
-          クリエイティブとコミュニティを軸に、<br>
-          多様な事業を展開するプロダクションです。
-        </p>
-        <div class="hero-btns">
-          <a href="#business" class="btn btn-primary">展開事業を見る</a>
-          <a href="#contact" class="btn btn-outline">お問い合わせ</a>
-        </div>
+    <div class="hero-content">
+      <img src="main.png" alt="Entry Production" class="hero-logo">
+      <h1 class="hero-tagline">誰もがクリエイティブになれる</h1>
+      <p class="hero-sub">
+        Entry Production（エンプロ）は、<br>
+        クリエイティブをテーマに企画・運営を行うプロダクションです。
+      </p>
+      <div class="scroll-hint">
+        Scroll
+        <span></span>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about">
+  <!-- About -->
+  <section id="about">
     <div class="container">
-      <div class="section-label">Company</div>
-      <h2 class="section-title">Entry Production について</h2>
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Entry Production とは</h2>
+      <p class="section-desc">
+        「Entry」という名前には、<br class="sp">誰もが気軽に足を踏み入れられる場所をつくりたいという想いが込められています。
+      </p>
+
       <div class="about-grid">
         <div class="about-text">
           <p>
-            Entry Production（エントリープロダクション / 通称：エンプロ）は、ゲームコミュニティやWebサービスをはじめとするクリエイティブ領域において、企画・運営・展開を行うプロダクションです。
+            Entry Production（エントリープロダクション / 通称：<strong>エンプロ</strong>）は、ゲームコミュニティやWebサービスをはじめとするクリエイティブ領域において、企画・運営・展開を行うプロダクションです。
           </p>
           <p>
-            「誰もが気軽に入れる場所をつくる」ことを基本方針とし、安心・安全で質の高い体験の提供を目指しています。Minecraftサーバー「ドル鯖」や、簡単辞典「簡辞」など、ユーザーに寄り添ったサービスを展開しています。
+            私たちは「<strong>誰もがクリエイティブになれる</strong>」ことを理念に掲げ、技術や経験の差に関係なく、誰もが自分らしい表現や体験を生み出せる環境づくりを目指しています。
           </p>
           <p>
             ロゴに用いている矢印は、「次のステージへ進む」という当社の意志を象徴しています。
           </p>
-
-          <div class="about-names">
-            <h4>名称について</h4>
-            <ul>
-              <li><strong>正式名称</strong>：Entry Production</li>
-              <li><strong>日本語表記</strong>：エントリープロダクション</li>
-              <li><strong>通称</strong>：エンプロ</li>
-            </ul>
-          </div>
         </div>
-        <div class="stats">
-          <div class="stat-card">
-            <div class="stat-num">2024</div>
-            <div class="stat-label">設立</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">2+</div>
-            <div class="stat-label">展開事業</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">24h</div>
-            <div class="stat-label">サービス運営</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">JP</div>
-            <div class="stat-label">メイン市場</div>
-          </div>
+
+        <div class="about-card">
+          <h3>名称について</h3>
+          <ul class="name-list">
+            <li>
+              <span>正式名称</span>
+              <span>Entry Production</span>
+            </li>
+            <li>
+              <span>日本語表記</span>
+              <span>エントリープロダクション</span>
+            </li>
+            <li>
+              <span>通称</span>
+              <span>エンプロ</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="business">
-    <div class="container">
-      <div class="section-label">Business</div>
-      <h2 class="section-title">展開事業</h2>
-      <p class="section-lead">
-        Entry Production が現在展開している主な事業です。今後さらに事業領域を広げてまいります。
-      </p>
-
-      <div class="business-list">
-        <article class="business-card">
-          <div class="business-icon">⛏️</div>
-          <div>
-            <span class="business-tag">ゲームコミュニティ事業</span>
-            <h3 class="business-title">DOLDO SERVER（ドル鯖）</h3>
-            <p class="business-desc">
-              Minecraft 統合版を対象とした参加型サバイバルサーバー。フレンド申請のみで参加可能な設計により、幅広いユーザーが安心して建築・冒険・交流を楽しめる環境を提供しています。
-            </p>
-          </div>
-          <a href="https://plsjoin.github.io/DolSaba/index.html" target="_blank" rel="noopener" class="business-link">詳細を見る</a>
-        </article>
-
-        <article class="business-card">
-          <div class="business-icon dict">📖</div>
-          <div>
-            <span class="business-tag">Webサービス事業</span>
-            <h3 class="business-title">簡辞（かんじ）｜Easy Web Dictionary</h3>
-            <p class="business-desc">
-              知りたい単語だけを素早く調べられる、シンプルなWeb辞典。わかりやすく短い説明で、すぐに意味がわかることを目指したサービスです。
-            </p>
-          </div>
-          <a href="https://plsjoin.github.io/Dic/" target="_blank" rel="noopener" class="business-link">詳細を見る</a>
-        </article>
-
-        <article class="business-card">
-          <div class="business-icon soon">🚀</div>
-          <div>
-            <span class="business-tag">新規事業</span>
-            <h3 class="business-title">Next Project</h3>
-            <p class="business-desc">
-              現在、新たな事業の企画・準備を進めております。詳細が決まり次第、本ページにてお知らせいたします。
-            </p>
-          </div>
-          <span class="business-link" style="color: var(--text-muted); border-color: var(--border); cursor: default;">Coming Soon</span>
-        </article>
-      </div>
-    </div>
-  </section>
-
+  <!-- Philosophy -->
   <section id="philosophy" class="philosophy">
     <div class="container">
       <div class="section-label">Philosophy</div>
-      <h2 class="section-title">企業理念</h2>
-      <p class="philo-intro">
-        Entry Production（エンプロ）は、「Entry（入る）」という言葉に込められた意味を大切にしています。誰もが気軽に足を踏み入れられる場所をつくり、そこから新しい体験やつながりが生まれることを目指しています。
+      <h2 class="section-title">理念</h2>
+      <p class="section-desc">
+        私たちのすべての活動の根幹にある考え方です。
       </p>
 
-      <div class="philo-grid">
+      <div class="philosophy-grid">
         <div class="philo-card">
           <div class="philo-num">01</div>
-          <h3>気軽に入れる</h3>
-          <p>複雑な手続きを可能な限り排除し、誰もがすぐに参加・利用できる環境づくりを重視します。</p>
+          <h3>誰もがクリエイティブになれる</h3>
+          <p>
+            特別な才能や技術がなくても、誰もが自分の手で何かを生み出せる。その可能性を信じ、環境と機会を提供します。
+          </p>
         </div>
         <div class="philo-card">
           <div class="philo-num">02</div>
-          <h3>安心できる場</h3>
-          <p>迷惑行為を排除し、健全で質の高いサービス・コミュニティを維持することを最優先とします。</p>
+          <h3>気軽に入れる場所をつくる</h3>
+          <p>
+            複雑な手続きや高いハードルを可能な限り排除し、誰もがすぐに参加・利用できる場を大切にしています。
+          </p>
         </div>
         <div class="philo-card">
           <div class="philo-num">03</div>
-          <h3>自分のペース</h3>
-          <p>利用者一人ひとりのペースを尊重し、強制のない自由な体験を提供します。</p>
+          <h3>安心できる場を守る</h3>
+          <p>
+            迷惑行為を排除し、健全で質の高いサービス・コミュニティを維持することを最優先とします。
+          </p>
         </div>
         <div class="philo-card">
           <div class="philo-num">04</div>
-          <h3>つながりを育む</h3>
-          <p>単なるサービス提供にとどまらず、利用者同士の良好な関係や体験の広がりを支援します。</p>
+          <h3>自分のペースを尊重する</h3>
+          <p>
+            利用者一人ひとりのペースを大切にし、強制のない自由な体験と表現の場を提供します。
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="cta">
+  <!-- Services -->
+  <section id="services">
     <div class="container">
-      <div class="cta-box">
-        <h2 class="cta-title">お問い合わせ</h2>
-        <p class="cta-lead">
-          事業に関するご質問・ご相談は、LINEオープンチャットよりお気軽にお問い合わせください。
-        </p>
-        <div class="hero-btns" style="justify-content: center;">
-          <a href="https://line.me/ti/g2/m-35LWaRXXRocL6XmN3Xq7jRrvnJWPI-figSOQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" 
-             target="_blank" rel="noopener" class="btn btn-primary">
-            LINEオープンチャット
-          </a>
-          <a href="https://plsjoin.github.io/DolSaba/join.html" target="_blank" rel="noopener" class="btn btn-outline">
-            ドル鯖 参加方法
-          </a>
+      <div class="section-label">Services</div>
+      <h2 class="section-title">展開しているサービス</h2>
+      <p class="section-desc">
+        Entry Production が所有・管理している主なサービスです。
+      </p>
+
+      <div class="services-grid">
+        <!-- ドル鯖 -->
+        <div class="service-card">
+          <div class="service-icon">⛏️</div>
+          <div class="service-tag">GAME COMMUNITY</div>
+          <h3>DOLDO SERVER<br>（ドル鯖）</h3>
+          <p>
+            Minecraft 統合版を対象とした参加型サバイバルサーバー。<br>
+            フレンド申請のみで参加可能な設計により、幅広いユーザーが安心して建築・冒険・交流を楽しめる環境を提供しています。
+          </p>
+          <div class="owned-badge">Entry Production が所有・管理</div>
+        </div>
+
+        <!-- 簡辞 -->
+        <div class="service-card">
+          <div class="service-icon">📖</div>
+          <div class="service-tag">WEB SERVICE</div>
+          <h3>簡辞（かんじ）<br>Easy Web Dictionary</h3>
+          <p>
+            知りたい単語だけを素早く調べられる、シンプルなWeb辞典。<br>
+            わかりやすく短い説明で、すぐに意味がわかることを目指したサービスです。
+          </p>
+          <div class="owned-badge">Entry Production が所有・管理</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <img src="main.png" alt="Entry Production" class="footer-logo">
-      <p class="footer-copy">© 2024–2026 Entry Production（エントリープロダクション / エンプロ）. All rights reserved.</p>
+      <p class="footer-text">
+        <span>Entry Production</span> — 誰もがクリエイティブになれる
+      </p>
     </div>
   </footer>
 
