@@ -41,11 +41,14 @@
         "Noto Sans JP",
         Arial,
         sans-serif;
-
       color: var(--text);
       background: var(--white);
       line-height: 1.8;
       overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
     }
 
     img {
@@ -63,86 +66,209 @@
       margin: 0 auto;
     }
 
-    /* =========================
+
+    /* ========================================
        HEADER
-    ========================= */
+       バーを完全撤去
+    ======================================== */
 
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+
       z-index: 1000;
 
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
-
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
     }
 
     .header-inner {
-      height: 82px;
+      height: 100px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 30px;
+      pointer-events: none;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
+      display: block;
+
+      width: 225px;
+
+      pointer-events: auto;
     }
 
     .logo img {
-      width: 190px;
+      width: 100%;
       height: auto;
     }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
 
-    nav a {
+    /* ========================================
+       MENU BUTTON
+    ======================================== */
+
+    .menu-button {
       position: relative;
 
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      width: 70px;
+      height: 70px;
 
-      transition: color 0.25s ease;
+      border: none;
+      background: transparent;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      cursor: pointer;
+
+      pointer-events: auto;
+
+      color: var(--blue);
+
+      z-index: 1100;
     }
 
-    nav a::after {
-      content: "";
+    .menu-lines {
+      width: 38px;
 
-      position: absolute;
-      left: 0;
-      bottom: -8px;
+      display: flex;
+      flex-direction: column;
 
-      width: 0;
+      gap: 7px;
+    }
+
+    .menu-lines span {
+      display: block;
+
+      width: 100%;
       height: 2px;
 
       background: var(--blue);
 
-      transition: width 0.25s ease;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
     }
 
-    nav a:hover {
-      color: var(--blue);
+    .menu-label {
+      margin-top: 2px;
+
+      font-size: 0.62rem;
+      font-weight: 800;
+
+      letter-spacing: 0.15em;
     }
 
-    nav a:hover::after {
+    .menu-button.active .menu-lines span:first-child {
+      transform: translateY(4.5px) rotate(45deg);
+    }
+
+    .menu-button.active .menu-lines span:last-child {
+      transform: translateY(-4.5px) rotate(-45deg);
+    }
+
+
+    /* ========================================
+       MENU OVERLAY
+    ======================================== */
+
+    .menu-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1050;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.98),
+          rgba(235, 246, 255, 0.98)
+        );
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-inner {
+      width: min(1100px, calc(100% - 48px));
+      height: 100%;
+
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-list {
+      list-style: none;
+
       width: 100%;
     }
 
-    /* =========================
+    .menu-list li {
+      border-bottom: 1px solid rgba(36, 118, 232, 0.15);
+    }
+
+    .menu-list li:first-child {
+      border-top: 1px solid rgba(36, 118, 232, 0.15);
+    }
+
+    .menu-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 24px 5px;
+
+      color: var(--text);
+
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 800;
+
+      transition:
+        color 0.25s ease,
+        padding-left 0.25s ease;
+    }
+
+    .menu-list a:hover {
+      color: var(--blue);
+      padding-left: 15px;
+    }
+
+    .menu-list small {
+      color: var(--blue);
+
+      font-size: 0.65rem;
+      font-weight: 800;
+
+      letter-spacing: 0.18em;
+    }
+
+
+    /* ========================================
        HERO
-    ========================= */
+    ======================================== */
 
     .hero {
       position: relative;
@@ -206,9 +332,11 @@
 
     .hero-inner {
       position: relative;
+
       z-index: 1;
 
       width: min(1200px, calc(100% - 48px));
+
       margin: 0 auto;
 
       padding: 150px 0 100px;
@@ -229,6 +357,7 @@
 
     .hero-title {
       font-size: clamp(3rem, 8vw, 7rem);
+
       line-height: 1.08;
 
       font-weight: 900;
@@ -297,9 +426,10 @@
       background: var(--blue);
     }
 
-    /* =========================
+
+    /* ========================================
        COMMON
-    ========================= */
+    ======================================== */
 
     section {
       padding: 140px 0;
@@ -342,9 +472,10 @@
       font-size: 1rem;
     }
 
-    /* =========================
+
+    /* ========================================
        ABOUT
-    ========================= */
+    ======================================== */
 
     .about {
       background: var(--white);
@@ -382,9 +513,10 @@
       margin-top: 28px;
     }
 
-    /* =========================
+
+    /* ========================================
        PHILOSOPHY
-    ========================= */
+    ======================================== */
 
     .philosophy {
       background: var(--blue-soft);
@@ -431,9 +563,10 @@
       font-size: 0.95rem;
     }
 
-    /* =========================
+
+    /* ========================================
        PROJECTS
-    ========================= */
+    ======================================== */
 
     .projects {
       background: var(--white);
@@ -472,7 +605,8 @@
     .project-card:hover {
       transform: translateY(-8px);
 
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.14);
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.14);
     }
 
     .project-card.blue {
@@ -552,9 +686,10 @@
       font-weight: 300;
     }
 
-    /* =========================
+
+    /* ========================================
        ENTRY
-    ========================= */
+    ======================================== */
 
     .entry {
       position: relative;
@@ -593,6 +728,7 @@
       z-index: 1;
 
       display: flex;
+
       align-items: flex-end;
       justify-content: space-between;
 
@@ -630,9 +766,10 @@
       opacity: 0.85;
     }
 
-    /* =========================
+
+    /* ========================================
        FOOTER
-    ========================= */
+    ======================================== */
 
     footer {
       padding: 70px 0;
@@ -691,26 +828,24 @@
       font-size: 0.75rem;
     }
 
-    /* =========================
+
+    /* ========================================
        RESPONSIVE
-    ========================= */
+    ======================================== */
 
     @media (max-width: 900px) {
 
-      header {
-        position: fixed;
-      }
-
       .header-inner {
-        height: 70px;
+        height: 85px;
       }
 
-      .logo img {
-        width: 155px;
+      .logo {
+        width: 190px;
       }
 
-      nav {
-        display: none;
+      .menu-button {
+        width: 65px;
+        height: 65px;
       }
 
       .hero {
@@ -762,11 +897,35 @@
       }
     }
 
+
     @media (max-width: 600px) {
 
       .container,
       .hero-inner {
         width: min(100% - 32px, 1200px);
+      }
+
+      .header-inner {
+        height: 78px;
+      }
+
+      .logo {
+        width: 175px;
+      }
+
+      .menu-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .menu-lines {
+        width: 32px;
+      }
+
+      .menu-list a {
+        padding: 20px 3px;
+
+        font-size: 1.7rem;
       }
 
       .hero {
@@ -818,34 +977,124 @@
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+
+  <!-- ========================================
        HEADER
-  ========================== -->
+  ========================================= -->
 
   <header>
+
     <div class="container header-inner">
 
-      <a href="#" class="logo">
-        <img src="main.png" alt="Entry Production">
+      <!-- 左上ロゴ -->
+
+      <a
+        href="#"
+        class="logo"
+        aria-label="Entry Production トップ"
+      >
+        <img
+          src="main.png"
+          alt="Entry Production"
+        >
       </a>
 
-      <nav>
-        <a href="#about">ABOUT</a>
-        <a href="#philosophy">PHILOSOPHY</a>
-        <a href="#projects">PROJECTS</a>
-      </nav>
+
+      <!-- 右上メニュー -->
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+      >
+
+        <div class="menu-lines">
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="menu-label">
+          MENU
+        </span>
+
+      </button>
 
     </div>
+
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================== -->
+
+  <!-- ========================================
+       MENU
+  ========================================= -->
+
+  <div
+    class="menu-overlay"
+    id="menuOverlay"
+  >
+
+    <div class="menu-inner">
+
+      <ul class="menu-list">
+
+        <li>
+          <a href="#">
+            <span>TOP</span>
+            <small>01</small>
+          </a>
+        </li>
+
+        <li>
+          <a href="#about">
+            <span>ABOUT</span>
+            <small>02</small>
+          </a>
+        </li>
+
+        <li>
+          <a href="#philosophy">
+            <span>PHILOSOPHY</span>
+            <small>03</small>
+          </a>
+        </li>
+
+        <li>
+          <a href="#projects">
+            <span>PROJECTS</span>
+            <small>04</small>
+          </a>
+        </li>
+
+        <li>
+          <a href="#entry">
+            <span>CONTACT</span>
+            <small>05</small>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ========================================
+       MAIN
+  ========================================= -->
 
   <main>
+
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
 
     <section class="hero">
 
@@ -855,28 +1104,45 @@
           ENTRY PRODUCTION
         </span>
 
+
         <h1 class="hero-title">
+
           誰もが<br>
-          <span>クリエイティブ</span><br>
+
+          <span>
+            クリエイティブ
+          </span><br>
+
           になれる。
+
         </h1>
 
+
         <p class="hero-subtitle">
+
           ゲーム、Web、コミュニティ。<br>
           新しい「つくる」を、もっと身近に。
+
         </p>
 
+
         <div class="hero-logo-wrap">
+
           <img
             src="main.png"
             alt="Entry Production"
             class="hero-logo"
           >
+
         </div>
 
+
         <div class="hero-scroll">
+
           SCROLL
+
           <span></span>
+
         </div>
 
       </div>
@@ -884,9 +1150,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ========================================
          ABOUT
-    ========================== -->
+    ========================================= -->
 
     <section
       id="about"
@@ -902,14 +1169,17 @@
           </span>
 
           <h2 class="section-title">
+
             Entry Production<br>
             とは？
+
           </h2>
 
         </div>
 
 
         <div class="about-grid">
+
 
           <div class="about-main">
 
@@ -955,9 +1225,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ========================================
          PHILOSOPHY
-    ========================== -->
+    ========================================= -->
 
     <section
       id="philosophy"
@@ -966,6 +1237,7 @@
 
       <div class="container">
 
+
         <div class="section-head">
 
           <span class="section-en">
@@ -973,8 +1245,10 @@
           </span>
 
           <h2 class="section-title">
+
             私たちが<br>
             大切にしていること。
+
           </h2>
 
         </div>
@@ -1066,9 +1340,10 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- ========================================
          PROJECTS
-    ========================== -->
+    ========================================= -->
 
     <section
       id="projects"
@@ -1077,6 +1352,7 @@
 
       <div class="container">
 
+
         <div class="section-head">
 
           <span class="section-en">
@@ -1084,8 +1360,10 @@
           </span>
 
           <h2 class="section-title">
+
             展開している<br>
             プロジェクト。
+
           </h2>
 
           <p class="section-description">
@@ -1129,7 +1407,8 @@
           </article>
 
 
-          <!-- EASY WEB DICTIONARY -->
+
+          <!-- 簡辞 -->
 
           <article class="project-card light">
 
@@ -1166,13 +1445,18 @@
     </section>
 
 
-    <!-- =========================
-         ENTRY
-    ========================== -->
 
-    <section class="entry">
+    <!-- ========================================
+         ENTRY
+    ========================================= -->
+
+    <section
+      class="entry"
+      id="entry"
+    >
 
       <div class="container entry-inner">
+
 
         <div>
 
@@ -1181,18 +1465,22 @@
           </span>
 
           <h2 class="entry-title">
+
             次の一歩を、<br>
             もっと自由に。
+
           </h2>
 
         </div>
 
 
         <p class="entry-text">
+
           Entry Productionは、
           これからも新しいアイデアとクリエイティブを通して、
           誰かが「やってみたい」と思える
           新しい入口をつくっていきます。
+
         </p>
 
       </div>
@@ -1203,15 +1491,18 @@
   </main>
 
 
-  <!-- =========================
+
+  <!-- ========================================
        FOOTER
-  ========================== -->
+  ========================================= -->
 
   <footer>
 
     <div class="container">
 
+
       <div class="footer-inner">
+
 
         <img
           src="main.png"
@@ -1236,16 +1527,133 @@
 
         </div>
 
+
       </div>
 
 
       <div class="copyright">
+
         © 2026 Entry Production.
+
       </div>
+
 
     </div>
 
   </footer>
+
+
+
+  <!-- ========================================
+       MENU JAVASCRIPT
+  ========================================= -->
+
+  <script>
+
+    const menuButton = document.getElementById("menuButton");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    const menuLinks = document.querySelectorAll(
+      ".menu-list a"
+    );
+
+
+    function openMenu() {
+
+      menuButton.classList.add("active");
+
+      menuOverlay.classList.add("active");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "メニューを閉じる"
+      );
+
+      document.body.classList.add("menu-open");
+
+    }
+
+
+    function closeMenu() {
+
+      menuButton.classList.remove("active");
+
+      menuOverlay.classList.remove("active");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "メニューを開く"
+      );
+
+      document.body.classList.remove("menu-open");
+
+    }
+
+
+    menuButton.addEventListener(
+      "click",
+      function() {
+
+        if (
+          menuOverlay.classList.contains("active")
+        ) {
+
+          closeMenu();
+
+        } else {
+
+          openMenu();
+
+        }
+
+      }
+    );
+
+
+    menuLinks.forEach(
+      function(link) {
+
+        link.addEventListener(
+          "click",
+          function() {
+
+            closeMenu();
+
+          }
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Escape" &&
+          menuOverlay.classList.contains("active")
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+  </script>
+
 
 </body>
 </html>
