@@ -7,21 +7,21 @@
   <meta name="description" content="Entry Production（エンプロ）は「誰もがクリエイティブになれる」を理念に、ゲームコミュニティやWebサービスを企画・運営するクリエイティブプロダクションです。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
+      --ocean-deep: #02101f;
+      --ocean-mid: #0a1f38;
+      --ocean-light: #123a5c;
+      --aqua: #5ce1ff;
+      --aqua-soft: #8ef0ff;
       --blue: #1e90ff;
-      --blue-bright: #3ba3ff;
-      --blue-glow: #00b4ff;
-      --aqua: #7ee8fa;
-      --aqua-dim: rgba(126, 232, 250, 0.12);
-      --dark: #050b14;
-      --dark-2: #0a1628;
-      --dark-3: #0f1f35;
-      --text: #e8f4ff;
-      --text-muted: #8ba4c0;
-      --card-bg: rgba(15, 31, 53, 0.65);
-      --border: rgba(59, 163, 255, 0.25);
+      --blue-glow: #00c4ff;
+      --text: #eaf6ff;
+      --text-muted: #8fb4d4;
+      --card: rgba(8, 28, 52, 0.55);
+      --border: rgba(92, 225, 255, 0.18);
+      --glow: 0 0 40px rgba(0, 196, 255, 0.15);
     }
 
     * {
@@ -36,45 +36,80 @@
 
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      background-color: var(--dark);
+      background: var(--ocean-deep);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
-    /* ===== Background: castle atmosphere + aqua tint + pattern ===== */
-    .bg-layer {
+    /* ===== Castle + Ocean Background ===== */
+    .bg {
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -3;
       background:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(30, 144, 255, 0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 80% 50% at 80% 60%, rgba(0, 180, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 15% 80%, rgba(126, 232, 250, 0.06) 0%, transparent 45%),
-        linear-gradient(180deg, #050b14 0%, #0a1628 40%, #07101c 100%);
+        radial-gradient(ellipse 140% 90% at 50% -30%, rgba(0, 140, 220, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 60% at 90% 40%, rgba(0, 180, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 50% at 10% 70%, rgba(92, 225, 255, 0.06) 0%, transparent 45%),
+        linear-gradient(180deg, #02101f 0%, #061828 35%, #0a2038 70%, #041420 100%);
     }
 
-    /* Subtle geometric pattern (castle / creative motif) */
-    .bg-pattern {
+    /* Soft castle silhouette (CSS only) */
+    .castle {
       position: fixed;
-      inset: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 42vh;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.14;
+      background:
+        /* main keep */
+        linear-gradient(to top, #0a2038 0%, transparent 100%) 50% 100% / 28% 70% no-repeat,
+        /* left tower */
+        linear-gradient(to top, #0a2038 0%, transparent 100%) 18% 100% / 14% 90% no-repeat,
+        /* right tower */
+        linear-gradient(to top, #0a2038 0%, transparent 100%) 82% 100% / 14% 85% no-repeat,
+        /* mid left wall */
+        linear-gradient(to top, #0a2038 0%, transparent 100%) 32% 100% / 10% 55% no-repeat,
+        /* mid right wall */
+        linear-gradient(to top, #0a2038 0%, transparent 100%) 68% 100% / 10% 50% no-repeat;
+      mask-image: linear-gradient(to top, black 20%, transparent 100%);
+    }
+
+    /* Subtle water reflection / waves */
+    .waves {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
       z-index: -1;
       opacity: 0.07;
-      background-image:
-        linear-gradient(30deg, transparent 40%, rgba(59, 163, 255, 0.4) 40%, rgba(59, 163, 255, 0.4) 41%, transparent 41%),
-        linear-gradient(-30deg, transparent 40%, rgba(126, 232, 250, 0.3) 40%, rgba(126, 232, 250, 0.3) 41%, transparent 41%),
-        linear-gradient(90deg, transparent 49%, rgba(30, 144, 255, 0.25) 49%, rgba(30, 144, 255, 0.25) 51%, transparent 51%);
-      background-size: 80px 140px, 80px 140px, 120px 120px;
-      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          rgba(92, 225, 255, 0.4) 40px,
+          rgba(92, 225, 255, 0.4) 42px
+        );
+      mask-image: linear-gradient(to top, black, transparent);
+      animation: waveMove 18s linear infinite;
     }
 
-    /* Soft vignette for depth (castle-like atmosphere) */
-    .bg-vignette {
+    @keyframes waveMove {
+      from { background-position: 0 0; }
+      to { background-position: 80px 0; }
+    }
+
+    .vignette {
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 11, 20, 0.7) 100%);
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(2, 16, 31, 0.75) 100%);
       pointer-events: none;
     }
 
@@ -82,20 +117,14 @@
     h1, h2, h3 {
       font-family: 'Outfit', 'Noto Sans JP', sans-serif;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
-    /* ===== Layout helpers ===== */
     .container {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section {
-      padding: 100px 0;
-      position: relative;
+      padding: 0 28px;
     }
 
     /* ===== Header ===== */
@@ -105,11 +134,10 @@
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 18px 0;
-      background: rgba(5, 11, 20, 0.75);
-      backdrop-filter: blur(12px);
+      padding: 20px 0;
+      background: rgba(2, 16, 31, 0.6);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
     }
 
     .header-inner {
@@ -118,29 +146,23 @@
       justify-content: space-between;
     }
 
-    .logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
     .logo-link img {
-      height: 36px;
+      height: 34px;
       width: auto;
-      filter: drop-shadow(0 0 8px rgba(30, 144, 255, 0.5));
+      filter: drop-shadow(0 0 10px rgba(0, 196, 255, 0.45));
     }
 
     nav {
       display: flex;
-      gap: 28px;
+      gap: 32px;
     }
 
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       transition: color 0.25s;
     }
 
@@ -155,154 +177,147 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding-top: 80px;
+      padding: 120px 0 80px;
       position: relative;
     }
 
     .hero-content {
-      max-width: 820px;
+      max-width: 720px;
     }
 
     .hero-logo {
-      width: min(560px, 90vw);
+      width: min(480px, 85vw);
       height: auto;
-      margin-bottom: 40px;
-      filter: drop-shadow(0 0 30px rgba(30, 144, 255, 0.45));
-      animation: logoFloat 6s ease-in-out infinite;
+      margin-bottom: 48px;
+      filter: drop-shadow(0 0 36px rgba(0, 196, 255, 0.4));
+      animation: float 7s ease-in-out infinite;
     }
 
-    @keyframes logoFloat {
+    @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
     }
 
     .hero-tagline {
-      font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+      font-size: clamp(1.7rem, 4.8vw, 2.7rem);
       font-weight: 800;
       color: #fff;
-      margin-bottom: 18px;
-      letter-spacing: 0.06em;
-      text-shadow: 0 0 40px rgba(30, 144, 255, 0.4);
+      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 50px rgba(0, 196, 255, 0.35);
     }
 
     .hero-sub {
       font-size: 1.05rem;
       color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 56px;
+      line-height: 1.9;
       font-weight: 400;
-      max-width: 520px;
-      margin: 0 auto 48px;
-      line-height: 1.8;
     }
 
     .scroll-hint {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       color: var(--text-muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.7;
-      animation: bounce 2.2s infinite;
+      opacity: 0.65;
+      animation: bounce 2.4s infinite;
     }
 
     .scroll-hint span {
       width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, var(--blue-bright), transparent);
+      height: 40px;
+      background: linear-gradient(to bottom, var(--aqua), transparent);
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
+      50% { transform: translateY(10px); }
     }
 
-    /* ===== Section titles ===== */
+    /* ===== Common section ===== */
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
     .section-label {
       display: inline-block;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--blue-bright);
-      margin-bottom: 12px;
+      color: var(--aqua);
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin-bottom: 20px;
+      font-size: clamp(1.9rem, 4.2vw, 2.5rem);
       color: #fff;
+      margin-bottom: 18px;
     }
 
     .section-desc {
       color: var(--text-muted);
-      max-width: 580px;
+      max-width: 520px;
       font-size: 1.02rem;
+      line-height: 1.85;
     }
 
     /* ===== About ===== */
-    .about-grid {
+    .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 50px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
     }
 
     .about-text p {
-      margin-bottom: 18px;
       color: var(--text-muted);
       font-size: 1.02rem;
+      margin-bottom: 22px;
     }
 
     .about-text p strong {
-      color: var(--aqua);
+      color: var(--aqua-soft);
       font-weight: 600;
     }
 
     .about-card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 36px 32px;
-      backdrop-filter: blur(8px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--aqua));
+      backdrop-filter: blur(12px);
+      box-shadow: var(--glow);
     }
 
     .about-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 14px;
+      font-size: 1.1rem;
       color: #fff;
-    }
-
-    .about-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      margin-bottom: 20px;
     }
 
     .name-list {
       list-style: none;
-      margin-top: 20px;
     }
 
     .name-list li {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(59, 163, 255, 0.12);
-      font-size: 0.92rem;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(92, 225, 255, 0.1);
+      font-size: 0.93rem;
+    }
+
+    .name-list li:last-child {
+      border-bottom: none;
     }
 
     .name-list li span:first-child {
@@ -316,74 +331,74 @@
 
     /* ===== Philosophy ===== */
     .philosophy {
-      background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.6) 50%, transparent 100%);
+      background: linear-gradient(180deg, transparent, rgba(6, 28, 48, 0.5) 40%, transparent);
     }
 
-    .philosophy-grid {
+    .philo-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 50px;
+      gap: 28px;
+      margin-top: 56px;
     }
 
     .philo-card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 32px 28px;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      border-radius: 20px;
+      padding: 36px 30px;
+      transition: transform 0.35s ease, border-color 0.35s, box-shadow 0.35s;
       position: relative;
       overflow: hidden;
     }
 
     .philo-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(59, 163, 255, 0.5);
-      box-shadow: 0 12px 40px rgba(30, 144, 255, 0.15);
+      transform: translateY(-8px);
+      border-color: rgba(92, 225, 255, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 160, 255, 0.12);
     }
 
     .philo-num {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      color: rgba(59, 163, 255, 0.25);
+      color: rgba(92, 225, 255, 0.18);
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .philo-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
+      font-size: 1.18rem;
       color: #fff;
+      margin-bottom: 14px;
     }
 
     .philo-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     /* ===== Services ===== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 50px;
+      gap: 32px;
+      margin-top: 56px;
     }
 
     .service-card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px 32px;
+      border-radius: 22px;
+      padding: 44px 36px;
+      transition: transform 0.35s ease, box-shadow 0.35s;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(30, 144, 255, 0.18);
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(0, 160, 255, 0.16);
     }
 
     .service-card::after {
@@ -393,9 +408,9 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
+      background: linear-gradient(90deg, transparent, var(--aqua), transparent);
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.35s;
     }
 
     .service-card:hover::after {
@@ -403,88 +418,89 @@
     }
 
     .service-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(30, 144, 255, 0.25), rgba(126, 232, 250, 0.15));
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0, 180, 255, 0.22), rgba(92, 225, 255, 0.1));
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 22px;
-      border: 1px solid var(--border);
-    }
-
-    .service-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 8px;
-      color: #fff;
+      font-size: 1.55rem;
+      margin-bottom: 24px;
     }
 
     .service-tag {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--blue-bright);
-      background: rgba(30, 144, 255, 0.12);
-      padding: 4px 12px;
+      letter-spacing: 0.1em;
+      color: var(--aqua);
+      background: rgba(0, 180, 255, 0.12);
+      padding: 5px 14px;
       border-radius: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    .service-card h3 {
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.4;
     }
 
     .service-card p {
       color: var(--text-muted);
       font-size: 0.96rem;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
-    .owned-badge {
+    .owned {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      margin-top: 20px;
+      gap: 8px;
+      margin-top: 24px;
       font-size: 0.82rem;
-      color: var(--aqua);
+      color: var(--aqua-soft);
       font-weight: 500;
     }
 
-    .owned-badge::before {
+    .owned::before {
       content: '';
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--aqua);
-      box-shadow: 0 0 8px var(--aqua);
+      box-shadow: 0 0 10px var(--aqua);
     }
 
     /* ===== Footer ===== */
     footer {
-      padding: 50px 0 40px;
+      padding: 60px 0 48px;
       border-top: 1px solid var(--border);
       text-align: center;
     }
 
     .footer-logo {
-      height: 28px;
-      margin-bottom: 16px;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 6px rgba(30, 144, 255, 0.4));
+      height: 26px;
+      margin-bottom: 18px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 8px rgba(0, 196, 255, 0.4));
     }
 
     .footer-text {
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
     }
 
     .footer-text span {
-      color: var(--blue-bright);
+      color: var(--aqua);
     }
 
     /* ===== Responsive ===== */
-    @media (max-width: 860px) {
-      .about-grid,
-      .philosophy-grid,
+    @media (max-width: 900px) {
+      .about-layout,
+      .philo-grid,
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -494,11 +510,11 @@
       }
 
       section {
-        padding: 70px 0;
+        padding: 80px 0;
       }
 
-      .hero-logo {
-        margin-bottom: 32px;
+      .hero {
+        padding: 100px 0 60px;
       }
     }
 
@@ -508,13 +524,18 @@
       .about-card {
         padding: 28px 22px;
       }
+
+      .hero-logo {
+        margin-bottom: 36px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="bg-layer"></div>
-  <div class="bg-pattern"></div>
-  <div class="bg-vignette"></div>
+  <div class="bg"></div>
+  <div class="castle"></div>
+  <div class="waves"></div>
+  <div class="vignette"></div>
 
   <!-- Header -->
   <header>
@@ -552,10 +573,11 @@
       <div class="section-label">About Us</div>
       <h2 class="section-title">Entry Production とは</h2>
       <p class="section-desc">
-        「Entry」という名前には、<br class="sp">誰もが気軽に足を踏み入れられる場所をつくりたいという想いが込められています。
+        「Entry」という名前には、<br>
+        誰もが気軽に足を踏み入れられる場所をつくりたいという想いが込められています。
       </p>
 
-      <div class="about-grid">
+      <div class="about-layout">
         <div class="about-text">
           <p>
             Entry Production（エントリープロダクション / 通称：<strong>エンプロ</strong>）は、ゲームコミュニティやWebサービスをはじめとするクリエイティブ領域において、企画・運営・展開を行うプロダクションです。
@@ -598,7 +620,7 @@
         私たちのすべての活動の根幹にある考え方です。
       </p>
 
-      <div class="philosophy-grid">
+      <div class="philo-grid">
         <div class="philo-card">
           <div class="philo-num">01</div>
           <h3>誰もがクリエイティブになれる</h3>
@@ -641,7 +663,6 @@
       </p>
 
       <div class="services-grid">
-        <!-- ドル鯖 -->
         <div class="service-card">
           <div class="service-icon">⛏️</div>
           <div class="service-tag">GAME COMMUNITY</div>
@@ -650,10 +671,9 @@
             Minecraft 統合版を対象とした参加型サバイバルサーバー。<br>
             フレンド申請のみで参加可能な設計により、幅広いユーザーが安心して建築・冒険・交流を楽しめる環境を提供しています。
           </p>
-          <div class="owned-badge">Entry Production が所有・管理</div>
+          <div class="owned">Entry Production が所有・管理</div>
         </div>
 
-        <!-- 簡辞 -->
         <div class="service-card">
           <div class="service-icon">📖</div>
           <div class="service-tag">WEB SERVICE</div>
@@ -662,7 +682,7 @@
             知りたい単語だけを素早く調べられる、シンプルなWeb辞典。<br>
             わかりやすく短い説明で、すぐに意味がわかることを目指したサービスです。
           </p>
-          <div class="owned-badge">Entry Production が所有・管理</div>
+          <div class="owned">Entry Production が所有・管理</div>
         </div>
       </div>
     </div>
@@ -677,6 +697,5 @@
       </p>
     </div>
   </footer>
-
 </body>
 </html>
