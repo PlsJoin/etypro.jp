@@ -258,11 +258,20 @@
 
     .menu-list a {
       display: inline-flex;
-      align-items: center;
+      align-items: baseline;
+      gap: 16px;
       color: var(--text);
       font-size: clamp(1.5rem, 4vw, 2.4rem);
       font-weight: 800;
       transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .menu-list a .jp-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      transition: color 0.25s ease;
     }
 
 
@@ -271,9 +280,8 @@
       transform: translateX(6px);
     }
 
-
-    .menu-list small {
-      display: none;
+    .menu-list a:hover .jp-label {
+      color: var(--blue);
     }
 
 
@@ -290,11 +298,32 @@
       border: none;
       background: transparent;
       color: var(--blue);
-      font-size: 2rem;
-      font-weight: 400;
-      line-height: 1;
       cursor: pointer;
       transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .menu-close-icon {
+      position: relative;
+      width: 28px;
+      height: 28px;
+    }
+
+    .menu-close-icon span {
+      position: absolute;
+      top: 13px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    .menu-close-icon span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-close-icon span:nth-child(2) {
+      transform: rotate(-45deg);
     }
 
 
@@ -542,12 +571,35 @@
       border-radius: 16px;
       background-color: var(--white);
       background-image:
-        radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--project-color, #2476e8) 12%, transparent) 0, color-mix(in srgb, var(--project-color, #2476e8) 12%, transparent) 1px, transparent 1.5px),
-        radial-gradient(circle at 78% 72%, color-mix(in srgb, var(--project-color, #2476e8) 8%, transparent) 0, color-mix(in srgb, var(--project-color, #2476e8) 8%, transparent) 1px, transparent 1.5px),
-        linear-gradient(135deg, color-mix(in srgb, var(--project-color, #2476e8) 8%, #ffffff), color-mix(in srgb, var(--project-color, #2476e8) 3%, #ffffff));
-      background-size: 28px 28px, 36px 36px, auto;
+        radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--project-color, #2476e8) 18%, transparent) 0%, transparent 45%),
+        radial-gradient(circle at 10% 90%, color-mix(in srgb, var(--project-color, #2476e8) 10%, transparent) 0%, transparent 40%),
+        linear-gradient(135deg, color-mix(in srgb, var(--project-color, #2476e8) 6%, #ffffff), color-mix(in srgb, var(--project-color, #2476e8) 2%, #ffffff));
       border: 1px solid color-mix(in srgb, var(--project-color, #2476e8) 18%, #e6eaf0);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 2px solid color-mix(in srgb, var(--project-color, #2476e8) 12%, transparent);
+      pointer-events: none;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--project-color, #2476e8) 8%, transparent);
+      pointer-events: none;
     }
 
     .project-card:hover {
@@ -956,7 +1008,6 @@
         right: 18px;
         width: 48px;
         height: 48px;
-        font-size: 1.9rem;
       }
 
 
@@ -1106,7 +1157,10 @@
       type="button"
       aria-label="メニューを閉じる"
     >
-      ×
+      <div class="menu-close-icon">
+        <span></span>
+        <span></span>
+      </div>
     </button>
 
     <div class="menu-inner">
@@ -1116,6 +1170,7 @@
         <li>
           <a href="#">
             <span>TOP</span>
+            <span class="jp-label">トップ</span>
           </a>
         </li>
 
@@ -1123,6 +1178,7 @@
         <li>
           <a href="#about">
             <span>ABOUT</span>
+            <span class="jp-label">概要</span>
           </a>
         </li>
 
@@ -1130,6 +1186,7 @@
         <li>
           <a href="#projects">
             <span>PROJECTS</span>
+            <span class="jp-label">事業内容</span>
           </a>
         </li>
 
@@ -1137,6 +1194,7 @@
         <li>
           <a href="#philosophy">
             <span>PHILOSOPHY</span>
+            <span class="jp-label">理念</span>
           </a>
         </li>
 
@@ -1144,6 +1202,7 @@
         <li>
           <a href="#entry">
             <span>CONTACT</span>
+            <span class="jp-label">お問い合わせ</span>
           </a>
         </li>
 
