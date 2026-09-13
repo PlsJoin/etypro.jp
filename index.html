@@ -518,162 +518,140 @@
       background: var(--white);
     }
 
-
     .project-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
-
 
     .project-card {
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 420px;
+      min-height: 400px;
       overflow: hidden;
-      border-radius: 28px;
-      background: #f8fafc;
-      border: 1px solid var(--line);
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--project-color, #2476e8) 8%, #ffffff);
+      border: 1px solid color-mix(in srgb, var(--project-color, #2476e8) 18%, #e6eaf0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-
 
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
     }
-
 
     /* 右上の正方形画像 */
     .project-image-wrap {
       position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 140px;
-      height: 140px;
-      border-radius: 20px;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
       z-index: 2;
     }
-
 
     .project-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.35s ease;
     }
-
 
     .project-card:hover .project-image {
-      transform: scale(1.06);
+      transform: scale(1.04);
     }
 
-
-    /* 左上の番号 */
-    .project-number {
-      position: absolute;
-      top: 28px;
-      left: 32px;
-      z-index: 3;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      color: var(--muted);
+    /* 画像がないときのフォールバック */
+    .project-image-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--project-color, var(--blue));
+      background: color-mix(in srgb, var(--project-color, #2476e8) 12%, #ffffff);
     }
-
 
     /* コンテンツ */
     .project-content {
       position: relative;
       z-index: 1;
       margin-top: auto;
-      padding: 32px 32px 36px;
-      padding-right: 180px;
+      padding: 28px 28px 28px;
+      padding-right: 156px;
     }
-
 
     .project-type {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: #fff;
-      background: var(--project-color, var(--blue));
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--project-color, var(--blue));
     }
 
-
     .project-card h3 {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 900;
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
       color: var(--text);
     }
 
-
     .project-tagline {
-      margin-top: 10px;
-      font-size: 1.05rem;
-      font-weight: 700;
+      margin-top: 8px;
+      font-size: 1rem;
+      font-weight: 600;
       line-height: 1.5;
       color: var(--text);
     }
 
-
     .project-description {
-      margin-top: 14px;
-      font-size: 0.9rem;
-      line-height: 1.8;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      line-height: 1.75;
       color: var(--muted);
     }
 
-
+    /* 公式HPボタン（角四角寄り） */
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 22px;
-      padding: 11px 18px;
-      border-radius: 999px;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
       background: var(--project-color, var(--blue));
       color: #fff;
-      font-size: 0.8rem;
-      font-weight: 800;
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
-
 
     .project-link:hover {
-      opacity: 0.9;
-      transform: translateX(4px);
+      opacity: 0.88;
+      transform: translateY(-1px);
     }
 
-
     .project-link-arrow {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1;
     }
 
-
     .project-empty {
-      padding: 80px 20px;
+      padding: 72px 20px;
       color: var(--muted);
       text-align: center;
       border: 1px dashed var(--line);
-      border-radius: 30px;
+      border-radius: 16px;
     }
-
-
 
     /* ========================================
        PHILOSOPHY
@@ -993,35 +971,30 @@
 
 
       .project-card {
-        min-height: 380px;
-        border-radius: 24px;
+        min-height: 360px;
+        border-radius: 14px;
       }
 
 
       .project-image-wrap {
-        width: 110px;
-        height: 110px;
-        top: 20px;
-        right: 20px;
-        border-radius: 16px;
+        width: 96px;
+        height: 96px;
+        top: 16px;
+        right: 16px;
+        border-radius: 10px;
       }
 
 
       .project-content {
-        padding: 28px 24px 32px;
-        padding-right: 140px;
-      }
-
-
-      .project-number {
-        top: 22px;
-        left: 24px;
+        padding: 24px 22px 24px;
+        padding-right: 128px;
       }
 
 
       .project-link {
-        padding: 11px 17px;
-        font-size: 0.76rem;
+        padding: 11px 16px;
+        font-size: 0.78rem;
+        border-radius: 8px;
       }
 
 
@@ -1691,173 +1664,83 @@
       document.getElementById("projectList");
 
 
-    function createProjectCard(
-      project,
-      index
-    ) {
-
-      const card =
-        document.createElement("article");
-
+    function createProjectCard(project, index) {
+      const card = document.createElement("article");
       card.className = "project-card";
 
-      // カラーをCSS変数で渡す
       if (project.color) {
-        card.style.setProperty(
-          "--project-color",
-          project.color
-        );
+        card.style.setProperty("--project-color", project.color);
       }
 
+      // 右上画像
+      const imageWrap = document.createElement("div");
+      imageWrap.className = "project-image-wrap";
 
-      /* -------------------------
-         右上の正方形画像
-      ------------------------- */
+      const image = document.createElement("img");
+      image.className = "project-image";
+      image.src = "pro/" + project.image;
+      image.alt = project.name;
+      image.loading = "lazy";
 
-      const imageWrap =
-        document.createElement("div");
+      // 画像が無いときのフォールバック
+      image.onerror = function () {
+        image.remove();
 
-      imageWrap.className =
-        "project-image-wrap";
+        const fallback = document.createElement("div");
+        fallback.className = "project-image-fallback";
+        fallback.textContent = project.name.slice(0, 2);
 
-
-      const image =
-        document.createElement("img");
-
-      image.className =
-        "project-image";
-
-      image.src =
-        "pro/" + project.image;
-
-      image.alt =
-        project.name;
-
-      image.loading =
-        "lazy";
+        imageWrap.appendChild(fallback);
+      };
 
       imageWrap.appendChild(image);
 
+      // コンテンツ
+      const content = document.createElement("div");
+      content.className = "project-content";
 
-      /* -------------------------
-         NUMBER
-      ------------------------- */
+      const genre = document.createElement("span");
+      genre.className = "project-type";
+      genre.textContent = project.genre;
 
-      const number =
-        document.createElement("div");
+      const title = document.createElement("h3");
+      title.textContent = project.name;
 
-      number.className =
-        "project-number";
+      const tagline = document.createElement("p");
+      tagline.className = "project-tagline";
+      tagline.textContent = project.tagline;
 
-      number.textContent =
-        "PROJECT " +
-        String(index + 1).padStart(2, "0");
-
-
-      /* -------------------------
-         CONTENT
-      ------------------------- */
-
-      const content =
-        document.createElement("div");
-
-      content.className =
-        "project-content";
-
-
-      const genre =
-        document.createElement("span");
-
-      genre.className =
-        "project-type";
-
-      genre.textContent =
-        project.genre;
-
-
-      const title =
-        document.createElement("h3");
-
-      title.textContent =
-        project.name;
-
-
-      const tagline =
-        document.createElement("p");
-
-      tagline.className =
-        "project-tagline";
-
-      tagline.textContent =
-        project.tagline;
-
-
-      const description =
-        document.createElement("p");
-
-      description.className =
-        "project-description";
-
-      description.textContent =
-        project.description;
-
+      const description = document.createElement("p");
+      description.className = "project-description";
+      description.textContent = project.description;
 
       content.appendChild(genre);
       content.appendChild(title);
       content.appendChild(tagline);
       content.appendChild(description);
 
-
-      /* -------------------------
-         OFFICIAL WEBSITE
-      ------------------------- */
-
-      if (
-        project.url &&
-        project.url.trim() !== ""
-      ) {
-
-        const link =
-          document.createElement("a");
-
-        link.className =
-          "project-link";
-
-        link.href =
-          project.url;
-
-        link.target =
-          "_blank";
-
-        link.rel =
-          "noopener noreferrer";
+      // 公式リンク（角四角）
+      if (project.url && project.url.trim() !== "") {
+        const link = document.createElement("a");
+        link.className = "project-link";
+        link.href = project.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
 
         link.innerHTML =
-
           "<span>" +
           escapeHTML(project.name) +
-          "の公式ホームページへ" +
-          "</span>" +
-
-          "<span class=\"project-link-arrow\">→</span>";
+          "の公式ホームページへ</span>" +
+          '<span class="project-link-arrow">→</span>';
 
         content.appendChild(link);
-
       }
 
-
-      /* -------------------------
-         BUILD
-      ------------------------- */
-
       card.appendChild(imageWrap);
-      card.appendChild(number);
       card.appendChild(content);
 
       return card;
-
     }
-
 
 
     /* ========================================
