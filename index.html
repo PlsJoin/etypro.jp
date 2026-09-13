@@ -127,9 +127,9 @@
       width: 68px;
       height: 68px;
       border: none;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 10px 30px rgba(30, 80, 150, 0.12);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -146,8 +146,8 @@
 
 
     .menu-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 14px 35px rgba(30, 80, 150, 0.18);
+      transform: none;
+      box-shadow: none;
     }
 
 
@@ -256,42 +256,55 @@
 
 
     .menu-list li {
-      margin: 12px 0;
+      margin: 18px 0;
     }
 
 
     .menu-list a {
-      min-height: 76px;
-      padding: 15px 28px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(36, 118, 232, 0.10);
-      box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
       color: var(--text);
-      font-size: clamp(1.35rem, 4vw, 2.2rem);
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
       font-weight: 800;
-      transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+      transition: color 0.25s ease, transform 0.25s ease;
     }
 
 
     .menu-list a:hover {
       color: var(--blue);
-      background: #ffffff;
-      transform: translateX(8px);
+      transform: translateX(6px);
     }
 
 
     .menu-list small {
+      display: none;
+    }
+
+
+    .menu-close {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 2;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+
+    .menu-close:hover {
       color: var(--blue);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      transform: rotate(90deg);
     }
 
 
@@ -927,10 +940,22 @@
       }
 
 
+      .menu-list li {
+        margin: 16px 0;
+      }
+
+
       .menu-list a {
-        min-height: 65px;
-        padding: 12px 22px;
         font-size: 1.5rem;
+      }
+
+
+      .menu-close {
+        top: 18px;
+        right: 18px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.9rem;
       }
 
 
@@ -1074,6 +1099,15 @@
     id="menuOverlay"
   >
 
+    <button
+      class="menu-close"
+      id="menuClose"
+      type="button"
+      aria-label="メニューを閉じる"
+    >
+      ×
+    </button>
+
     <div class="menu-inner">
 
       <ul class="menu-list">
@@ -1081,7 +1115,6 @@
         <li>
           <a href="#">
             <span>TOP</span>
-            <small>01</small>
           </a>
         </li>
 
@@ -1089,7 +1122,6 @@
         <li>
           <a href="#about">
             <span>ABOUT</span>
-            <small>02</small>
           </a>
         </li>
 
@@ -1097,7 +1129,6 @@
         <li>
           <a href="#projects">
             <span>PROJECTS</span>
-            <small>03</small>
           </a>
         </li>
 
@@ -1105,7 +1136,6 @@
         <li>
           <a href="#philosophy">
             <span>PHILOSOPHY</span>
-            <small>04</small>
           </a>
         </li>
 
@@ -1113,7 +1143,6 @@
         <li>
           <a href="#entry">
             <span>CONTACT</span>
-            <small>05</small>
           </a>
         </li>
 
@@ -1577,6 +1606,9 @@
     const menuOverlay =
       document.getElementById("menuOverlay");
 
+    const menuClose =
+      document.getElementById("menuClose");
+
     const menuLinks =
       document.querySelectorAll(".menu-list a");
 
@@ -1608,6 +1640,14 @@
       menuLabel.textContent = "MENU";
 
     }
+
+
+    menuClose.addEventListener(
+      "click",
+      function () {
+        closeMenu();
+      }
+    );
 
 
     menuButton.addEventListener(
