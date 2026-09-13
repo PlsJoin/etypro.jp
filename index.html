@@ -221,11 +221,7 @@
       inset: 0;
       z-index: 1050;
       background:
-        linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.98),
-          rgba(235, 246, 255, 0.98)
-        );
+        linear-gradient(135deg, #ffffff 0%, #f2fbff 48%, #dff7fa 100%);
       opacity: 0;
       visibility: hidden;
       transition:
@@ -544,7 +540,11 @@
       min-height: 400px;
       overflow: hidden;
       border-radius: 16px;
-      background: color-mix(in srgb, var(--project-color, #2476e8) 8%, #ffffff);
+      background:
+        radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--project-color, #2476e8) 14%, transparent) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 78% 72%, color-mix(in srgb, var(--project-color, #2476e8) 10%, transparent) 0 1px, transparent 1.5px),
+        linear-gradient(135deg, color-mix(in srgb, var(--project-color, #2476e8) 9%, #ffffff), color-mix(in srgb, var(--project-color, #2476e8) 4%, #ffffff));
+      background-size: 28px 28px, 36px 36px, auto;
       border: 1px solid color-mix(in srgb, var(--project-color, #2476e8) 18%, #e6eaf0);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
@@ -640,7 +640,7 @@
       gap: 8px;
       margin-top: 20px;
       padding: 12px 18px;
-      border-radius: 8px;
+      border-radius: 0;
       background: var(--project-color, var(--blue));
       color: #fff;
       font-size: 0.82rem;
@@ -1019,7 +1019,7 @@
       .project-link {
         padding: 11px 16px;
         font-size: 0.78rem;
-        border-radius: 8px;
+        border-radius: 0;
       }
 
 
