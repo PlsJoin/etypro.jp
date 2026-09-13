@@ -12,6 +12,7 @@
   >
 
   <style>
+
     :root {
       --blue: #2476e8;
       --blue-light: #eaf3ff;
@@ -23,15 +24,18 @@
       --dark: #111827;
     }
 
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
+
 
     body {
       font-family:
@@ -41,25 +45,32 @@
         "Noto Sans JP",
         Arial,
         sans-serif;
+
       color: var(--text);
       background: var(--white);
+
       line-height: 1.8;
+
       overflow-x: hidden;
     }
+
 
     body.menu-open {
       overflow: hidden;
     }
+
 
     img {
       max-width: 100%;
       display: block;
     }
 
+
     a {
       color: inherit;
       text-decoration: none;
     }
+
 
     .container {
       width: min(1200px, calc(100% - 48px));
@@ -67,47 +78,55 @@
     }
 
 
+
     /* ========================================
        HEADER
-       バーを完全撤去
     ======================================== */
 
     header {
       position: fixed;
+
       top: 0;
       left: 0;
+
       width: 100%;
 
       z-index: 1000;
 
       background: transparent;
+
       border: none;
       box-shadow: none;
-      backdrop-filter: none;
-    }
-
-    .header-inner {
-      height: 100px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
       pointer-events: none;
     }
 
+
+    .header-inner {
+      height: 105px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
     .logo {
       display: block;
 
-      width: 225px;
+      width: 235px;
 
       pointer-events: auto;
     }
+
 
     .logo img {
       width: 100%;
       height: auto;
     }
+
 
 
     /* ========================================
@@ -117,18 +136,25 @@
     .menu-button {
       position: relative;
 
-      width: 70px;
-      height: 70px;
+      width: 68px;
+      height: 68px;
 
       border: none;
-      background: transparent;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      box-shadow:
+        0 10px 30px rgba(30, 80, 150, 0.12);
 
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
 
-      gap: 7px;
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
 
       cursor: pointer;
 
@@ -137,46 +163,102 @@
       color: var(--blue);
 
       z-index: 1100;
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     }
+
+
+    .menu-button:hover {
+      transform: scale(1.05);
+
+      box-shadow:
+        0 14px 35px rgba(30, 80, 150, 0.18);
+    }
+
 
     .menu-lines {
-      width: 38px;
+      position: relative;
 
-      display: flex;
-      flex-direction: column;
-
-      gap: 7px;
+      width: 28px;
+      height: 18px;
     }
 
+
     .menu-lines span {
-      display: block;
+      position: absolute;
+
+      left: 0;
 
       width: 100%;
       height: 2px;
+
+      border-radius: 2px;
 
       background: var(--blue);
 
       transition:
         transform 0.3s ease,
-        opacity 0.3s ease;
+        top 0.3s ease;
     }
+
+
+    .menu-lines span:first-child {
+      top: 3px;
+    }
+
+
+    .menu-lines span:last-child {
+      top: 13px;
+    }
+
 
     .menu-label {
-      margin-top: 2px;
+      margin-top: 1px;
 
-      font-size: 0.62rem;
+      font-size: 0.55rem;
+
       font-weight: 800;
 
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
     }
+
+
+    /* ========================================
+       MENU OPEN
+    ======================================== */
 
     .menu-button.active .menu-lines span:first-child {
-      transform: translateY(4.5px) rotate(45deg);
+      top: 8px;
+
+      transform: rotate(45deg);
     }
 
+
     .menu-button.active .menu-lines span:last-child {
-      transform: translateY(-4.5px) rotate(-45deg);
+      top: 8px;
+
+      transform: rotate(-45deg);
     }
+
+
+    .menu-button.active .menu-label {
+      font-size: 0;
+
+      margin: 0;
+    }
+
+
+    .menu-button.active .menu-label::after {
+      content: "CLOSE";
+
+      font-size: 0.52rem;
+
+      letter-spacing: 0.08em;
+    }
+
 
 
     /* ========================================
@@ -198,6 +280,7 @@
         );
 
       opacity: 0;
+
       visibility: hidden;
 
       transition:
@@ -205,20 +288,26 @@
         visibility 0.35s ease;
     }
 
+
     .menu-overlay.active {
       opacity: 1;
+
       visibility: visible;
     }
 
+
     .menu-inner {
-      width: min(1100px, calc(100% - 48px));
+      width: min(900px, calc(100% - 48px));
+
       height: 100%;
 
       margin: 0 auto;
 
       display: flex;
+
       align-items: center;
     }
+
 
     .menu-list {
       list-style: none;
@@ -226,44 +315,64 @@
       width: 100%;
     }
 
+
     .menu-list li {
-      border-bottom: 1px solid rgba(36, 118, 232, 0.15);
+      margin: 12px 0;
     }
 
-    .menu-list li:first-child {
-      border-top: 1px solid rgba(36, 118, 232, 0.15);
-    }
 
     .menu-list a {
+      min-height: 76px;
+
+      padding: 15px 28px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
-      padding: 24px 5px;
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.72);
+
+      border: 1px solid rgba(36, 118, 232, 0.10);
+
+      box-shadow:
+        0 8px 25px rgba(30, 80, 150, 0.05);
 
       color: var(--text);
 
-      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-size: clamp(1.35rem, 4vw, 2.2rem);
+
       font-weight: 800;
 
       transition:
         color 0.25s ease,
-        padding-left 0.25s ease;
+        background 0.25s ease,
+        transform 0.25s ease;
     }
+
 
     .menu-list a:hover {
       color: var(--blue);
-      padding-left: 15px;
+
+      background: #ffffff;
+
+      transform: translateX(8px);
     }
+
 
     .menu-list small {
       color: var(--blue);
 
       font-size: 0.65rem;
+
       font-weight: 800;
 
       letter-spacing: 0.18em;
     }
+
 
 
     /* ========================================
@@ -276,6 +385,7 @@
       min-height: 100vh;
 
       display: flex;
+
       align-items: center;
 
       overflow: hidden;
@@ -288,6 +398,7 @@
           #dceeff 100%
         );
     }
+
 
     .hero::before {
       content: "";
@@ -314,6 +425,7 @@
         );
     }
 
+
     .hero::after {
       content: "";
 
@@ -330,6 +442,7 @@
       background: rgba(36, 118, 232, 0.08);
     }
 
+
     .hero-inner {
       position: relative;
 
@@ -342,6 +455,7 @@
       padding: 150px 0 100px;
     }
 
+
     .hero-en {
       display: inline-block;
 
@@ -350,10 +464,12 @@
       color: var(--blue);
 
       font-size: 0.8rem;
+
       font-weight: 800;
 
       letter-spacing: 0.25em;
     }
+
 
     .hero-title {
       font-size: clamp(3rem, 8vw, 7rem);
@@ -365,9 +481,11 @@
       letter-spacing: -0.04em;
     }
 
+
     .hero-title span {
       color: var(--blue);
     }
+
 
     .hero-subtitle {
       margin-top: 28px;
@@ -383,10 +501,12 @@
       line-height: 2;
     }
 
+
     .hero-logo-wrap {
       margin-top: 55px;
 
       display: flex;
+
       align-items: center;
 
       width: min(620px, 85vw);
@@ -394,10 +514,13 @@
       padding: 25px 0;
     }
 
+
     .hero-logo {
       width: 100%;
+
       height: auto;
     }
+
 
     .hero-scroll {
       position: absolute;
@@ -406,12 +529,15 @@
       bottom: 60px;
 
       display: flex;
+
       align-items: center;
+
       gap: 15px;
 
       color: var(--muted);
 
       font-size: 0.7rem;
+
       font-weight: 700;
 
       letter-spacing: 0.2em;
@@ -419,12 +545,14 @@
       writing-mode: vertical-rl;
     }
 
+
     .hero-scroll span {
       width: 1px;
       height: 70px;
 
       background: var(--blue);
     }
+
 
 
     /* ========================================
@@ -435,9 +563,11 @@
       padding: 140px 0;
     }
 
+
     .section-head {
       margin-bottom: 70px;
     }
+
 
     .section-en {
       display: block;
@@ -447,10 +577,12 @@
       color: var(--blue);
 
       font-size: 0.78rem;
+
       font-weight: 800;
 
       letter-spacing: 0.22em;
     }
+
 
     .section-title {
       font-size: clamp(2.4rem, 5vw, 4.8rem);
@@ -461,6 +593,7 @@
 
       letter-spacing: -0.04em;
     }
+
 
     .section-description {
       margin-top: 25px;
@@ -473,6 +606,7 @@
     }
 
 
+
     /* ========================================
        ABOUT
     ======================================== */
@@ -480,6 +614,7 @@
     .about {
       background: var(--white);
     }
+
 
     .about-grid {
       display: grid;
@@ -491,6 +626,7 @@
       align-items: start;
     }
 
+
     .about-main {
       font-size: clamp(1.3rem, 2.4vw, 2rem);
 
@@ -499,9 +635,11 @@
       line-height: 1.8;
     }
 
+
     .about-main strong {
       color: var(--blue);
     }
+
 
     .about-side {
       color: var(--muted);
@@ -509,9 +647,11 @@
       font-size: 1rem;
     }
 
+
     .about-side p + p {
       margin-top: 28px;
     }
+
 
 
     /* ========================================
@@ -522,9 +662,11 @@
       background: var(--blue-soft);
     }
 
+
     .philosophy-list {
       border-top: 1px solid var(--line);
     }
+
 
     .philosophy-item {
       display: grid;
@@ -540,14 +682,17 @@
       border-bottom: 1px solid var(--line);
     }
 
+
     .philosophy-number {
       color: var(--blue);
 
       font-size: 1rem;
+
       font-weight: 800;
 
       letter-spacing: 0.1em;
     }
+
 
     .philosophy-title {
       font-size: clamp(1.4rem, 2vw, 2rem);
@@ -557,11 +702,13 @@
       line-height: 1.5;
     }
 
+
     .philosophy-text {
       color: var(--muted);
 
       font-size: 0.95rem;
     }
+
 
 
     /* ========================================
@@ -572,6 +719,7 @@
       background: var(--white);
     }
 
+
     .project-list {
       display: grid;
 
@@ -580,18 +728,21 @@
       gap: 28px;
     }
 
+
     .project-card {
       position: relative;
 
-      min-height: 500px;
-
-      padding: 50px;
+      min-height: 560px;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: flex-end;
 
       overflow: hidden;
+
+      border-radius: 32px;
 
       background: var(--dark);
 
@@ -602,6 +753,7 @@
         box-shadow 0.3s ease;
     }
 
+
     .project-card:hover {
       transform: translateY(-8px);
 
@@ -609,52 +761,88 @@
         0 30px 70px rgba(0, 0, 0, 0.14);
     }
 
-    .project-card.blue {
+
+    .project-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      opacity: 0.72;
+
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+    }
+
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+
+      opacity: 0.82;
+    }
+
+
+    .project-overlay {
+      position: absolute;
+
+      inset: 0;
+
       background:
         linear-gradient(
-          135deg,
-          #1b63cf,
-          #3995ff
+          to top,
+          rgba(0, 0, 0, 0.88) 0%,
+          rgba(0, 0, 0, 0.40) 48%,
+          rgba(0, 0, 0, 0.05) 100%
         );
     }
 
-    .project-card.light {
-      background:
-        linear-gradient(
-          135deg,
-          #f4f8ff,
-          #dfeeff
-        );
 
-      color: var(--text);
+    .project-content {
+      position: relative;
+
+      z-index: 2;
+
+      padding: 45px;
     }
+
 
     .project-number {
       position: absolute;
 
-      top: 40px;
+      top: 38px;
       left: 45px;
 
-      font-size: 0.75rem;
+      z-index: 3;
+
+      font-size: 0.72rem;
+
       font-weight: 800;
 
       letter-spacing: 0.18em;
 
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
-    .project-type {
-      display: inline-block;
 
-      margin-bottom: 18px;
+    .project-type {
+      display: block;
+
+      margin-bottom: 15px;
 
       font-size: 0.72rem;
+
       font-weight: 800;
 
       letter-spacing: 0.15em;
 
-      opacity: 0.75;
+      opacity: 0.82;
     }
+
 
     .project-card h3 {
       font-size: clamp(2rem, 4vw, 3.5rem);
@@ -666,25 +854,99 @@
       letter-spacing: -0.04em;
     }
 
-    .project-card p {
-      margin-top: 24px;
+
+    .project-tagline {
+      margin-top: 15px;
+
+      font-size: 1.1rem;
+
+      font-weight: 700;
+
+      line-height: 1.6;
+    }
+
+
+    .project-description {
+      margin-top: 18px;
 
       max-width: 500px;
 
-      font-size: 0.95rem;
+      font-size: 0.9rem;
 
       line-height: 1.9;
 
-      opacity: 0.8;
+      opacity: 0.82;
     }
+
+
+    /* ========================================
+       OFFICIAL WEBSITE BUTTON
+    ======================================== */
+
+    .project-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 25px;
+
+      padding: 12px 20px;
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.14);
+
+      border: 1px solid rgba(255, 255, 255, 0.28);
+
+      color: #ffffff;
+
+      font-size: 0.82rem;
+
+      font-weight: 800;
+
+      line-height: 1.4;
+
+      backdrop-filter: blur(8px);
+
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+
+
+    .project-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+
+      transform: translateX(5px);
+    }
+
+
+    .project-link-arrow {
+      font-size: 1.1rem;
+
+      line-height: 1;
+    }
+
 
     .project-arrow {
-      margin-top: 38px;
-
-      font-size: 2rem;
-
-      font-weight: 300;
+      display: none;
     }
+
+
+    .project-empty {
+      padding: 80px 20px;
+
+      color: var(--muted);
+
+      text-align: center;
+
+      border: 1px dashed var(--line);
+
+      border-radius: 30px;
+    }
+
 
 
     /* ========================================
@@ -706,6 +968,7 @@
       color: var(--white);
     }
 
+
     .entry::before {
       content: "";
 
@@ -722,6 +985,7 @@
       border-radius: 50%;
     }
 
+
     .entry-inner {
       position: relative;
 
@@ -730,10 +994,12 @@
       display: flex;
 
       align-items: flex-end;
+
       justify-content: space-between;
 
       gap: 50px;
     }
+
 
     .entry-en {
       display: block;
@@ -741,12 +1007,14 @@
       margin-bottom: 20px;
 
       font-size: 0.78rem;
+
       font-weight: 800;
 
       letter-spacing: 0.2em;
 
       opacity: 0.8;
     }
+
 
     .entry-title {
       font-size: clamp(2.5rem, 6vw, 5rem);
@@ -758,6 +1026,7 @@
       letter-spacing: -0.04em;
     }
 
+
     .entry-text {
       max-width: 500px;
 
@@ -765,6 +1034,7 @@
 
       opacity: 0.85;
     }
+
 
 
     /* ========================================
@@ -779,14 +1049,17 @@
       color: var(--white);
     }
 
+
     .footer-inner {
       display: flex;
 
       align-items: flex-end;
+
       justify-content: space-between;
 
       gap: 40px;
     }
+
 
     .footer-logo {
       width: 250px;
@@ -796,6 +1069,7 @@
       opacity: 0.95;
     }
 
+
     .footer-nav {
       display: flex;
 
@@ -803,6 +1077,7 @@
 
       gap: 20px 30px;
     }
+
 
     .footer-nav a {
       color: rgba(255, 255, 255, 0.65);
@@ -812,9 +1087,11 @@
       transition: color 0.2s ease;
     }
 
+
     .footer-nav a:hover {
       color: #ffffff;
     }
+
 
     .copyright {
       margin-top: 60px;
@@ -829,6 +1106,7 @@
     }
 
 
+
     /* ========================================
        RESPONSIVE
     ======================================== */
@@ -836,33 +1114,40 @@
     @media (max-width: 900px) {
 
       .header-inner {
-        height: 85px;
+        height: 90px;
       }
+
 
       .logo {
-        width: 190px;
+        width: 195px;
       }
 
+
       .menu-button {
-        width: 65px;
-        height: 65px;
+        width: 62px;
+        height: 62px;
       }
+
 
       .hero {
         min-height: 760px;
       }
 
+
       .hero-inner {
         padding-top: 130px;
       }
+
 
       .hero-scroll {
         display: none;
       }
 
+
       section {
         padding: 100px 0;
       }
+
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -870,19 +1155,23 @@
         gap: 45px;
       }
 
+
       .philosophy-item {
         grid-template-columns: 70px 1fr;
 
         gap: 20px;
       }
 
+
       .philosophy-text {
         grid-column: 2;
       }
 
+
       .project-list {
         grid-template-columns: 1fr;
       }
+
 
       .entry-inner {
         flex-direction: column;
@@ -890,12 +1179,15 @@
         align-items: flex-start;
       }
 
+
       .footer-inner {
         flex-direction: column;
 
         align-items: flex-start;
       }
+
     }
+
 
 
     @media (max-width: 600px) {
@@ -905,48 +1197,61 @@
         width: min(100% - 32px, 1200px);
       }
 
+
       .header-inner {
         height: 78px;
       }
+
 
       .logo {
         width: 175px;
       }
 
+
       .menu-button {
-        width: 60px;
-        height: 60px;
+        width: 58px;
+        height: 58px;
       }
+
 
       .menu-lines {
-        width: 32px;
+        width: 26px;
       }
+
 
       .menu-list a {
-        padding: 20px 3px;
+        min-height: 65px;
 
-        font-size: 1.7rem;
+        padding: 12px 22px;
+
+        font-size: 1.5rem;
       }
+
 
       .hero {
         min-height: 700px;
       }
 
+
       .hero-title {
         font-size: 3.3rem;
       }
+
 
       .hero-logo-wrap {
         margin-top: 40px;
       }
 
+
       .section-head {
         margin-bottom: 45px;
       }
 
+
       .section-title {
         font-size: 2.7rem;
       }
+
 
       .philosophy-item {
         grid-template-columns: 1fr;
@@ -954,24 +1259,41 @@
         gap: 14px;
       }
 
+
       .philosophy-text {
         grid-column: auto;
       }
 
-      .project-card {
-        min-height: 430px;
 
+      .project-card {
+        min-height: 480px;
+
+        border-radius: 25px;
+      }
+
+
+      .project-content {
         padding: 32px;
       }
 
+
       .project-number {
         top: 28px;
-        left: 30px;
+        left: 32px;
       }
+
+
+      .project-link {
+        padding: 11px 17px;
+
+        font-size: 0.76rem;
+      }
+
 
       .footer-logo {
         width: 210px;
       }
+
     }
 
   </style>
@@ -983,38 +1305,45 @@
 
   <!-- ========================================
        HEADER
-  ========================================= -->
+  ======================================== -->
 
   <header>
 
     <div class="container header-inner">
 
-      <!-- 左上ロゴ -->
+
+      <!-- LOGO -->
 
       <a
         href="#"
         class="logo"
         aria-label="Entry Production トップ"
       >
+
         <img
           src="main.png"
           alt="Entry Production"
         >
+
       </a>
 
 
-      <!-- 右上メニュー -->
+
+      <!-- MENU BUTTON -->
 
       <button
         class="menu-button"
         id="menuButton"
         aria-label="メニューを開く"
         aria-expanded="false"
+        type="button"
       >
 
         <div class="menu-lines">
+
           <span></span>
           <span></span>
+
         </div>
 
         <span class="menu-label">
@@ -1022,6 +1351,7 @@
         </span>
 
       </button>
+
 
     </div>
 
@@ -1031,7 +1361,7 @@
 
   <!-- ========================================
        MENU
-  ========================================= -->
+  ======================================== -->
 
   <div
     class="menu-overlay"
@@ -1049,12 +1379,14 @@
           </a>
         </li>
 
+
         <li>
           <a href="#about">
             <span>ABOUT</span>
             <small>02</small>
           </a>
         </li>
+
 
         <li>
           <a href="#philosophy">
@@ -1063,12 +1395,14 @@
           </a>
         </li>
 
+
         <li>
           <a href="#projects">
             <span>PROJECTS</span>
             <small>04</small>
           </a>
         </li>
+
 
         <li>
           <a href="#entry">
@@ -1087,18 +1421,19 @@
 
   <!-- ========================================
        MAIN
-  ========================================= -->
+  ======================================== -->
 
   <main>
 
 
     <!-- ========================================
          HERO
-    ========================================= -->
+    ======================================== -->
 
     <section class="hero">
 
       <div class="hero-inner">
+
 
         <span class="hero-en">
           ENTRY PRODUCTION
@@ -1145,6 +1480,7 @@
 
         </div>
 
+
       </div>
 
     </section>
@@ -1153,7 +1489,7 @@
 
     <!-- ========================================
          ABOUT
-    ========================================= -->
+    ======================================== -->
 
     <section
       id="about"
@@ -1162,11 +1498,13 @@
 
       <div class="container">
 
+
         <div class="section-head">
 
           <span class="section-en">
             ABOUT
           </span>
+
 
           <h2 class="section-title">
 
@@ -1178,6 +1516,7 @@
         </div>
 
 
+
         <div class="about-grid">
 
 
@@ -1187,13 +1526,17 @@
               誰かがつくった世界に入るだけじゃない。
             </p>
 
+
             <p>
+
               <strong>
                 自分たちで、新しい世界をつくる。
               </strong>
+
             </p>
 
           </div>
+
 
 
           <div class="about-side">
@@ -1204,11 +1547,13 @@
               さまざまなクリエイティブな企画・運営を行うプロダクションです。
             </p>
 
+
             <p>
               「Entry」という名前には、
               誰もが気軽に新しい世界へ足を踏み入れられる場所を
               つくりたいという想いが込められています。
             </p>
+
 
             <p>
               経験や技術の差に関係なく、
@@ -1217,6 +1562,7 @@
             </p>
 
           </div>
+
 
         </div>
 
@@ -1228,7 +1574,7 @@
 
     <!-- ========================================
          PHILOSOPHY
-    ========================================= -->
+    ======================================== -->
 
     <section
       id="philosophy"
@@ -1244,6 +1590,7 @@
             PHILOSOPHY
           </span>
 
+
           <h2 class="section-title">
 
             私たちが<br>
@@ -1252,6 +1599,7 @@
           </h2>
 
         </div>
+
 
 
         <div class="philosophy-list">
@@ -1263,9 +1611,11 @@
               01
             </div>
 
+
             <h3 class="philosophy-title">
               誰もがクリエイティブになれる
             </h3>
+
 
             <p class="philosophy-text">
               特別な才能や経験がなくても、
@@ -1276,15 +1626,18 @@
           </article>
 
 
+
           <article class="philosophy-item">
 
             <div class="philosophy-number">
               02
             </div>
 
+
             <h3 class="philosophy-title">
               気軽に入れる場所をつくる
             </h3>
+
 
             <p class="philosophy-text">
               難しい手続きや高いハードルをできるだけ減らし、
@@ -1295,15 +1648,18 @@
           </article>
 
 
+
           <article class="philosophy-item">
 
             <div class="philosophy-number">
               03
             </div>
 
+
             <h3 class="philosophy-title">
               安心できる場を守る
             </h3>
+
 
             <p class="philosophy-text">
               誰もが安心して参加し、
@@ -1314,15 +1670,18 @@
           </article>
 
 
+
           <article class="philosophy-item">
 
             <div class="philosophy-number">
               04
             </div>
 
+
             <h3 class="philosophy-title">
               自分のペースを尊重する
             </h3>
+
 
             <p class="philosophy-text">
               全員が同じスピードで進む必要はありません。
@@ -1343,7 +1702,7 @@
 
     <!-- ========================================
          PROJECTS
-    ========================================= -->
+    ======================================== -->
 
     <section
       id="projects"
@@ -1359,6 +1718,7 @@
             PROJECTS
           </span>
 
+
           <h2 class="section-title">
 
             展開している<br>
@@ -1366,79 +1726,25 @@
 
           </h2>
 
+
           <p class="section-description">
-            Entry Productionが企画・運営しているサービスです。
+            Entry Productionが企画・運営しているプロジェクトです。
           </p>
 
         </div>
 
 
-        <div class="project-list">
 
+        <!--
+          pro/pro.js の情報から
+          プロジェクトを自動生成します
+        -->
 
-          <!-- DOLDO SERVER -->
+        <div
+          class="project-list"
+          id="projectList"
+        ></div>
 
-          <article class="project-card blue">
-
-            <div class="project-number">
-              PROJECT 01
-            </div>
-
-            <span class="project-type">
-              GAME COMMUNITY
-            </span>
-
-            <h3>
-              DOLDO<br>
-              SERVER
-            </h3>
-
-            <p>
-              Minecraft統合版を対象とした参加型サーバー。
-              建築、冒険、交流など、
-              プレイヤーそれぞれが自由に楽しめる
-              コミュニティを運営しています。
-            </p>
-
-            <div class="project-arrow">
-              →
-            </div>
-
-          </article>
-
-
-
-          <!-- 簡辞 -->
-
-          <article class="project-card light">
-
-            <div class="project-number">
-              PROJECT 02
-            </div>
-
-            <span class="project-type">
-              WEB SERVICE
-            </span>
-
-            <h3>
-              簡辞
-            </h3>
-
-            <p>
-              知りたい単語を、
-              もっと簡単に、もっと素早く。
-              わかりやすく短い説明で
-              意味を調べられるWeb辞典サービスです。
-            </p>
-
-            <div class="project-arrow">
-              →
-            </div>
-
-          </article>
-
-
-        </div>
 
       </div>
 
@@ -1448,7 +1754,7 @@
 
     <!-- ========================================
          ENTRY
-    ========================================= -->
+    ======================================== -->
 
     <section
       class="entry"
@@ -1463,6 +1769,7 @@
           <span class="entry-en">
             ENTRY INTO THE NEXT
           </span>
+
 
           <h2 class="entry-title">
 
@@ -1483,6 +1790,7 @@
 
         </p>
 
+
       </div>
 
     </section>
@@ -1494,7 +1802,7 @@
 
   <!-- ========================================
        FOOTER
-  ========================================= -->
+  ======================================== -->
 
   <footer>
 
@@ -1545,17 +1853,32 @@
 
 
   <!-- ========================================
-       MENU JAVASCRIPT
-  ========================================= -->
+       PROJECT DATA
+       pro/pro.js
+  ======================================== -->
+
+  <script src="pro/pro.js"></script>
+
+
+
+  <!-- ========================================
+       MENU + PROJECT SYSTEM
+  ======================================== -->
 
   <script>
 
-    const menuButton = document.getElementById("menuButton");
-    const menuOverlay = document.getElementById("menuOverlay");
+    /* ========================================
+       MENU SYSTEM
+    ======================================== */
 
-    const menuLinks = document.querySelectorAll(
-      ".menu-list a"
-    );
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menuOverlay =
+      document.getElementById("menuOverlay");
+
+    const menuLinks =
+      document.querySelectorAll(".menu-list a");
 
 
     function openMenu() {
@@ -1574,7 +1897,9 @@
         "メニューを閉じる"
       );
 
-      document.body.classList.add("menu-open");
+      document.body.classList.add(
+        "menu-open"
+      );
 
     }
 
@@ -1595,14 +1920,16 @@
         "メニューを開く"
       );
 
-      document.body.classList.remove("menu-open");
+      document.body.classList.remove(
+        "menu-open"
+      );
 
     }
 
 
     menuButton.addEventListener(
       "click",
-      function() {
+      function () {
 
         if (
           menuOverlay.classList.contains("active")
@@ -1621,11 +1948,11 @@
 
 
     menuLinks.forEach(
-      function(link) {
+      function (link) {
 
         link.addEventListener(
           "click",
-          function() {
+          function () {
 
             closeMenu();
 
@@ -1638,7 +1965,7 @@
 
     document.addEventListener(
       "keydown",
-      function(event) {
+      function (event) {
 
         if (
           event.key === "Escape" &&
@@ -1651,6 +1978,289 @@
 
       }
     );
+
+
+
+    /* ========================================
+       PROJECT SYSTEM
+    ======================================== */
+
+    const projectList =
+      document.getElementById("projectList");
+
+
+    function createProjectCard(
+      project,
+      index
+    ) {
+
+      const card =
+        document.createElement("article");
+
+
+      card.className =
+        "project-card";
+
+
+      /* -------------------------
+         IMAGE
+      ------------------------- */
+
+      const image =
+        document.createElement("img");
+
+
+      image.className =
+        "project-image";
+
+
+      image.src =
+        "pro/" + project.image;
+
+
+      image.alt =
+        project.name;
+
+
+      image.loading =
+        "lazy";
+
+
+      /* -------------------------
+         OVERLAY
+      ------------------------- */
+
+      const overlay =
+        document.createElement("div");
+
+
+      overlay.className =
+        "project-overlay";
+
+
+      /* -------------------------
+         NUMBER
+      ------------------------- */
+
+      const number =
+        document.createElement("div");
+
+
+      number.className =
+        "project-number";
+
+
+      number.textContent =
+        "PROJECT " +
+        String(index + 1).padStart(2, "0");
+
+
+      /* -------------------------
+         CONTENT
+      ------------------------- */
+
+      const content =
+        document.createElement("div");
+
+
+      content.className =
+        "project-content";
+
+
+      /* ジャンル */
+
+      const genre =
+        document.createElement("span");
+
+
+      genre.className =
+        "project-type";
+
+
+      genre.textContent =
+        project.genre;
+
+
+      /* 名前 */
+
+      const title =
+        document.createElement("h3");
+
+
+      title.textContent =
+        project.name;
+
+
+      /* 謳い文句 */
+
+      const tagline =
+        document.createElement("p");
+
+
+      tagline.className =
+        "project-tagline";
+
+
+      tagline.textContent =
+        project.tagline;
+
+
+      /* 説明 */
+
+      const description =
+        document.createElement("p");
+
+
+      description.className =
+        "project-description";
+
+
+      description.textContent =
+        project.description;
+
+
+      /* -------------------------
+         OFFICIAL WEBSITE
+      ------------------------- */
+
+      if (
+        project.url &&
+        project.url.trim() !== ""
+      ) {
+
+        const link =
+          document.createElement("a");
+
+
+        link.className =
+          "project-link";
+
+
+        link.href =
+          project.url;
+
+
+        link.target =
+          "_blank";
+
+
+        link.rel =
+          "noopener noreferrer";
+
+
+        link.innerHTML =
+
+          "<span>" +
+          escapeHTML(project.name) +
+          "の公式ホームページへ" +
+          "</span>" +
+
+          "<span class=\"project-link-arrow\">→</span>";
+
+
+        content.appendChild(link);
+
+      }
+
+
+      /* -------------------------
+         BUILD
+      ------------------------- */
+
+      content.appendChild(genre);
+
+      content.appendChild(title);
+
+      content.appendChild(tagline);
+
+      content.appendChild(description);
+
+
+      card.appendChild(image);
+
+      card.appendChild(overlay);
+
+      card.appendChild(number);
+
+      card.appendChild(content);
+
+
+      return card;
+
+    }
+
+
+
+    /* ========================================
+       HTML ESCAPE
+    ======================================== */
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+
+    /* ========================================
+       LOAD PROJECTS
+    ======================================== */
+
+    function loadProjects() {
+
+      projectList.innerHTML = "";
+
+
+      if (
+        !window.projects ||
+        !Array.isArray(window.projects) ||
+        window.projects.length === 0
+      ) {
+
+        const empty =
+          document.createElement("div");
+
+
+        empty.className =
+          "project-empty";
+
+
+        empty.textContent =
+          "現在公開されているプロジェクトはありません。";
+
+
+        projectList.appendChild(empty);
+
+        return;
+
+      }
+
+
+      window.projects.forEach(
+        function (project, index) {
+
+          const card =
+            createProjectCard(
+              project,
+              index
+            );
+
+
+          projectList.appendChild(card);
+
+        }
+      );
+
+    }
+
+
+    loadProjects();
 
   </script>
 
