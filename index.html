@@ -85,39 +85,28 @@
 
     header {
       position: fixed;
-
       top: 0;
       left: 0;
-
       width: 100%;
-
       z-index: 1000;
-
       background: transparent;
-
       border: none;
       box-shadow: none;
-
       pointer-events: none;
     }
 
 
     .header-inner {
       height: 105px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
     }
 
 
     .logo {
       display: block;
-
       width: 235px;
-
       pointer-events: auto;
     }
 
@@ -135,35 +124,20 @@
 
     .menu-button {
       position: relative;
-
       width: 68px;
       height: 68px;
-
       border: none;
-
       border-radius: 50%;
-
       background: rgba(255, 255, 255, 0.94);
-
-      box-shadow:
-        0 10px 30px rgba(30, 80, 150, 0.12);
-
+      box-shadow: 0 10px 30px rgba(30, 80, 150, 0.12);
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       justify-content: center;
-
       cursor: pointer;
-
       pointer-events: auto;
-
       color: var(--blue);
-
       z-index: 1100;
-
       transition:
         background 0.3s ease,
         transform 0.3s ease,
@@ -173,15 +147,12 @@
 
     .menu-button:hover {
       transform: scale(1.05);
-
-      box-shadow:
-        0 14px 35px rgba(30, 80, 150, 0.18);
+      box-shadow: 0 14px 35px rgba(30, 80, 150, 0.18);
     }
 
 
     .menu-lines {
       position: relative;
-
       width: 28px;
       height: 18px;
     }
@@ -189,16 +160,11 @@
 
     .menu-lines span {
       position: absolute;
-
       left: 0;
-
       width: 100%;
       height: 2px;
-
       border-radius: 2px;
-
       background: var(--blue);
-
       transition:
         transform 0.3s ease,
         top 0.3s ease;
@@ -217,11 +183,8 @@
 
     .menu-label {
       margin-top: 1px;
-
       font-size: 0.55rem;
-
       font-weight: 800;
-
       letter-spacing: 0.12em;
     }
 
@@ -232,30 +195,18 @@
 
     .menu-button.active .menu-lines span:first-child {
       top: 8px;
-
       transform: rotate(45deg);
     }
 
 
     .menu-button.active .menu-lines span:last-child {
       top: 8px;
-
       transform: rotate(-45deg);
     }
 
 
     .menu-button.active .menu-label {
-      font-size: 0;
-
-      margin: 0;
-    }
-
-
-    .menu-button.active .menu-label::after {
-      content: "CLOSE";
-
       font-size: 0.52rem;
-
       letter-spacing: 0.08em;
     }
 
@@ -267,22 +218,16 @@
 
     .menu-overlay {
       position: fixed;
-
       inset: 0;
-
       z-index: 1050;
-
       background:
         linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.98),
           rgba(235, 246, 255, 0.98)
         );
-
       opacity: 0;
-
       visibility: hidden;
-
       transition:
         opacity 0.35s ease,
         visibility 0.35s ease;
@@ -291,27 +236,21 @@
 
     .menu-overlay.active {
       opacity: 1;
-
       visibility: visible;
     }
 
 
     .menu-inner {
       width: min(900px, calc(100% - 48px));
-
       height: 100%;
-
       margin: 0 auto;
-
       display: flex;
-
       align-items: center;
     }
 
 
     .menu-list {
       list-style: none;
-
       width: 100%;
     }
 
@@ -323,30 +262,17 @@
 
     .menu-list a {
       min-height: 76px;
-
       padding: 15px 28px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       border-radius: 999px;
-
       background: rgba(255, 255, 255, 0.72);
-
       border: 1px solid rgba(36, 118, 232, 0.10);
-
-      box-shadow:
-        0 8px 25px rgba(30, 80, 150, 0.05);
-
+      box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
       color: var(--text);
-
       font-size: clamp(1.35rem, 4vw, 2.2rem);
-
       font-weight: 800;
-
       transition:
         color 0.25s ease,
         background 0.25s ease,
@@ -356,20 +282,15 @@
 
     .menu-list a:hover {
       color: var(--blue);
-
       background: #ffffff;
-
       transform: translateX(8px);
     }
 
 
     .menu-list small {
       color: var(--blue);
-
       font-size: 0.65rem;
-
       font-weight: 800;
-
       letter-spacing: 0.18em;
     }
 
@@ -381,15 +302,10 @@
 
     .hero {
       position: relative;
-
       min-height: 100vh;
-
       display: flex;
-
       align-items: center;
-
       overflow: hidden;
-
       background:
         linear-gradient(
           135deg,
@@ -402,20 +318,14 @@
 
     .hero::before {
       content: "";
-
       position: absolute;
-
       width: 70vw;
       height: 70vw;
-
       min-width: 700px;
       min-height: 700px;
-
       right: -25vw;
       top: -20vw;
-
       border-radius: 50%;
-
       background:
         radial-gradient(
           circle,
@@ -428,56 +338,39 @@
 
     .hero::after {
       content: "";
-
       position: absolute;
-
       width: 600px;
       height: 600px;
-
       left: -250px;
       bottom: -350px;
-
       border-radius: 50%;
-
       background: rgba(36, 118, 232, 0.08);
     }
 
 
     .hero-inner {
       position: relative;
-
       z-index: 1;
-
       width: min(1200px, calc(100% - 48px));
-
       margin: 0 auto;
-
       padding: 150px 0 100px;
     }
 
 
     .hero-en {
       display: inline-block;
-
       margin-bottom: 24px;
-
       color: var(--blue);
-
       font-size: 0.8rem;
-
       font-weight: 800;
-
       letter-spacing: 0.25em;
     }
 
 
     .hero-title {
       font-size: clamp(3rem, 8vw, 7rem);
-
       line-height: 1.08;
-
       font-weight: 900;
-
       letter-spacing: -0.04em;
     }
 
@@ -489,59 +382,40 @@
 
     .hero-subtitle {
       margin-top: 28px;
-
       max-width: 650px;
-
       color: var(--muted);
-
       font-size: clamp(1rem, 2vw, 1.25rem);
-
       font-weight: 500;
-
       line-height: 2;
     }
 
 
     .hero-logo-wrap {
       margin-top: 55px;
-
       display: flex;
-
       align-items: center;
-
       width: min(620px, 85vw);
-
       padding: 25px 0;
     }
 
 
     .hero-logo {
       width: 100%;
-
       height: auto;
     }
 
 
     .hero-scroll {
       position: absolute;
-
       right: 0;
       bottom: 60px;
-
       display: flex;
-
       align-items: center;
-
       gap: 15px;
-
       color: var(--muted);
-
       font-size: 0.7rem;
-
       font-weight: 700;
-
       letter-spacing: 0.2em;
-
       writing-mode: vertical-rl;
     }
 
@@ -549,7 +423,6 @@
     .hero-scroll span {
       width: 1px;
       height: 70px;
-
       background: var(--blue);
     }
 
@@ -571,37 +444,26 @@
 
     .section-en {
       display: block;
-
       margin-bottom: 16px;
-
       color: var(--blue);
-
       font-size: 0.78rem;
-
       font-weight: 800;
-
       letter-spacing: 0.22em;
     }
 
 
     .section-title {
       font-size: clamp(2.4rem, 5vw, 4.8rem);
-
       font-weight: 900;
-
       line-height: 1.2;
-
       letter-spacing: -0.04em;
     }
 
 
     .section-description {
       margin-top: 25px;
-
       max-width: 650px;
-
       color: var(--muted);
-
       font-size: 1rem;
     }
 
@@ -618,20 +480,15 @@
 
     .about-grid {
       display: grid;
-
       grid-template-columns: 1fr 1fr;
-
       gap: 100px;
-
       align-items: start;
     }
 
 
     .about-main {
       font-size: clamp(1.3rem, 2.4vw, 2rem);
-
       font-weight: 700;
-
       line-height: 1.8;
     }
 
@@ -643,13 +500,177 @@
 
     .about-side {
       color: var(--muted);
-
       font-size: 1rem;
     }
 
 
     .about-side p + p {
       margin-top: 28px;
+    }
+
+
+
+    /* ========================================
+       PROJECTS
+    ======================================== */
+
+    .projects {
+      background: var(--white);
+    }
+
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* 右上の正方形画像 */
+    .project-image-wrap {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 140px;
+      height: 140px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      z-index: 2;
+    }
+
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+
+    .project-card:hover .project-image {
+      transform: scale(1.06);
+    }
+
+
+    /* 左上の番号 */
+    .project-number {
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      z-index: 3;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+
+    /* コンテンツ */
+    .project-content {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      padding: 32px 32px 36px;
+      padding-right: 180px;
+    }
+
+
+    .project-type {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #fff;
+      background: var(--project-color, var(--blue));
+    }
+
+
+    .project-card h3 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+
+    .project-tagline {
+      margin-top: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+
+    .project-description {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: var(--project-color, var(--blue));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+
+    .project-link:hover {
+      opacity: 0.9;
+      transform: translateX(4px);
+    }
+
+
+    .project-link-arrow {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+
+    .project-empty {
+      padding: 80px 20px;
+      color: var(--muted);
+      text-align: center;
+      border: 1px dashed var(--line);
+      border-radius: 30px;
     }
 
 
@@ -670,281 +691,32 @@
 
     .philosophy-item {
       display: grid;
-
       grid-template-columns: 120px 1fr 1fr;
-
       gap: 40px;
-
       align-items: start;
-
       padding: 42px 0;
-
       border-bottom: 1px solid var(--line);
     }
 
 
     .philosophy-number {
       color: var(--blue);
-
       font-size: 1rem;
-
       font-weight: 800;
-
       letter-spacing: 0.1em;
     }
 
 
     .philosophy-title {
       font-size: clamp(1.4rem, 2vw, 2rem);
-
       font-weight: 800;
-
       line-height: 1.5;
     }
 
 
     .philosophy-text {
       color: var(--muted);
-
       font-size: 0.95rem;
-    }
-
-
-
-    /* ========================================
-       PROJECTS
-    ======================================== */
-
-    .projects {
-      background: var(--white);
-    }
-
-
-    .project-list {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 28px;
-    }
-
-
-    .project-card {
-      position: relative;
-
-      min-height: 560px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: flex-end;
-
-      overflow: hidden;
-
-      border-radius: 32px;
-
-      background: var(--dark);
-
-      color: var(--white);
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    }
-
-
-    .project-card:hover {
-      transform: translateY(-8px);
-
-      box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.14);
-    }
-
-
-    .project-image {
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      opacity: 0.72;
-
-      transition:
-        transform 0.5s ease,
-        opacity 0.5s ease;
-    }
-
-
-    .project-card:hover .project-image {
-      transform: scale(1.05);
-
-      opacity: 0.82;
-    }
-
-
-    .project-overlay {
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.88) 0%,
-          rgba(0, 0, 0, 0.40) 48%,
-          rgba(0, 0, 0, 0.05) 100%
-        );
-    }
-
-
-    .project-content {
-      position: relative;
-
-      z-index: 2;
-
-      padding: 45px;
-    }
-
-
-    .project-number {
-      position: absolute;
-
-      top: 38px;
-      left: 45px;
-
-      z-index: 3;
-
-      font-size: 0.72rem;
-
-      font-weight: 800;
-
-      letter-spacing: 0.18em;
-
-      opacity: 0.8;
-    }
-
-
-    .project-type {
-      display: block;
-
-      margin-bottom: 15px;
-
-      font-size: 0.72rem;
-
-      font-weight: 800;
-
-      letter-spacing: 0.15em;
-
-      opacity: 0.82;
-    }
-
-
-    .project-card h3 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-
-      font-weight: 900;
-
-      line-height: 1.15;
-
-      letter-spacing: -0.04em;
-    }
-
-
-    .project-tagline {
-      margin-top: 15px;
-
-      font-size: 1.1rem;
-
-      font-weight: 700;
-
-      line-height: 1.6;
-    }
-
-
-    .project-description {
-      margin-top: 18px;
-
-      max-width: 500px;
-
-      font-size: 0.9rem;
-
-      line-height: 1.9;
-
-      opacity: 0.82;
-    }
-
-
-    /* ========================================
-       OFFICIAL WEBSITE BUTTON
-    ======================================== */
-
-    .project-link {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-      margin-top: 25px;
-
-      padding: 12px 20px;
-
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, 0.14);
-
-      border: 1px solid rgba(255, 255, 255, 0.28);
-
-      color: #ffffff;
-
-      font-size: 0.82rem;
-
-      font-weight: 800;
-
-      line-height: 1.4;
-
-      backdrop-filter: blur(8px);
-
-      transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-    }
-
-
-    .project-link:hover {
-      background: rgba(255, 255, 255, 0.25);
-
-      transform: translateX(5px);
-    }
-
-
-    .project-link-arrow {
-      font-size: 1.1rem;
-
-      line-height: 1;
-    }
-
-
-    .project-arrow {
-      display: none;
-    }
-
-
-    .project-empty {
-      padding: 80px 20px;
-
-      color: var(--muted);
-
-      text-align: center;
-
-      border: 1px dashed var(--line);
-
-      border-radius: 30px;
     }
 
 
@@ -955,83 +727,60 @@
 
     .entry {
       position: relative;
-
       overflow: hidden;
-
       background:
         linear-gradient(
           135deg,
           #1967db,
           #3c9aff
         );
-
       color: var(--white);
     }
 
 
     .entry::before {
       content: "";
-
       position: absolute;
-
       width: 700px;
       height: 700px;
-
       right: -300px;
       top: -250px;
-
       border: 100px solid rgba(255, 255, 255, 0.08);
-
       border-radius: 50%;
     }
 
 
     .entry-inner {
       position: relative;
-
       z-index: 1;
-
       display: flex;
-
       align-items: flex-end;
-
       justify-content: space-between;
-
       gap: 50px;
     }
 
 
     .entry-en {
       display: block;
-
       margin-bottom: 20px;
-
       font-size: 0.78rem;
-
       font-weight: 800;
-
       letter-spacing: 0.2em;
-
       opacity: 0.8;
     }
 
 
     .entry-title {
       font-size: clamp(2.5rem, 6vw, 5rem);
-
       font-weight: 900;
-
       line-height: 1.2;
-
       letter-spacing: -0.04em;
     }
 
 
     .entry-text {
       max-width: 500px;
-
       margin-top: 25px;
-
       opacity: 0.85;
     }
 
@@ -1043,47 +792,36 @@
 
     footer {
       padding: 70px 0;
-
       background: #111827;
-
       color: var(--white);
     }
 
 
     .footer-inner {
       display: flex;
-
       align-items: flex-end;
-
       justify-content: space-between;
-
       gap: 40px;
     }
 
 
     .footer-logo {
       width: 250px;
-
       filter: brightness(0) invert(1);
-
       opacity: 0.95;
     }
 
 
     .footer-nav {
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 20px 30px;
     }
 
 
     .footer-nav a {
       color: rgba(255, 255, 255, 0.65);
-
       font-size: 0.8rem;
-
       transition: color 0.2s ease;
     }
 
@@ -1095,13 +833,9 @@
 
     .copyright {
       margin-top: 60px;
-
       padding-top: 25px;
-
       border-top: 1px solid rgba(255, 255, 255, 0.12);
-
       color: rgba(255, 255, 255, 0.45);
-
       font-size: 0.75rem;
     }
 
@@ -1151,14 +885,12 @@
 
       .about-grid {
         grid-template-columns: 1fr;
-
         gap: 45px;
       }
 
 
       .philosophy-item {
         grid-template-columns: 70px 1fr;
-
         gap: 20px;
       }
 
@@ -1175,14 +907,12 @@
 
       .entry-inner {
         flex-direction: column;
-
         align-items: flex-start;
       }
 
 
       .footer-inner {
         flex-direction: column;
-
         align-items: flex-start;
       }
 
@@ -1221,9 +951,7 @@
 
       .menu-list a {
         min-height: 65px;
-
         padding: 12px 22px;
-
         font-size: 1.5rem;
       }
 
@@ -1255,7 +983,6 @@
 
       .philosophy-item {
         grid-template-columns: 1fr;
-
         gap: 14px;
       }
 
@@ -1266,26 +993,34 @@
 
 
       .project-card {
-        min-height: 480px;
+        min-height: 380px;
+        border-radius: 24px;
+      }
 
-        border-radius: 25px;
+
+      .project-image-wrap {
+        width: 110px;
+        height: 110px;
+        top: 20px;
+        right: 20px;
+        border-radius: 16px;
       }
 
 
       .project-content {
-        padding: 32px;
+        padding: 28px 24px 32px;
+        padding-right: 140px;
       }
 
 
       .project-number {
-        top: 28px;
-        left: 32px;
+        top: 22px;
+        left: 24px;
       }
 
 
       .project-link {
         padding: 11px 17px;
-
         font-size: 0.76rem;
       }
 
@@ -1340,10 +1075,8 @@
       >
 
         <div class="menu-lines">
-
           <span></span>
           <span></span>
-
         </div>
 
         <span class="menu-label">
@@ -1389,16 +1122,16 @@
 
 
         <li>
-          <a href="#philosophy">
-            <span>PHILOSOPHY</span>
+          <a href="#projects">
+            <span>PROJECTS</span>
             <small>03</small>
           </a>
         </li>
 
 
         <li>
-          <a href="#projects">
-            <span>PROJECTS</span>
+          <a href="#philosophy">
+            <span>PHILOSOPHY</span>
             <small>04</small>
           </a>
         </li>
@@ -1573,6 +1306,53 @@
 
 
     <!-- ========================================
+         PROJECTS
+    ======================================== -->
+
+    <section
+      id="projects"
+      class="projects"
+    >
+
+      <div class="container">
+
+
+        <div class="section-head">
+
+          <span class="section-en">
+            PROJECTS
+          </span>
+
+
+          <h2 class="section-title">
+
+            展開している<br>
+            プロジェクト。
+
+          </h2>
+
+
+          <p class="section-description">
+            Entry Productionが企画・運営しているプロジェクトです。
+          </p>
+
+        </div>
+
+
+
+        <div
+          class="project-list"
+          id="projectList"
+        ></div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================
          PHILOSOPHY
     ======================================== -->
 
@@ -1701,58 +1481,6 @@
 
 
     <!-- ========================================
-         PROJECTS
-    ======================================== -->
-
-    <section
-      id="projects"
-      class="projects"
-    >
-
-      <div class="container">
-
-
-        <div class="section-head">
-
-          <span class="section-en">
-            PROJECTS
-          </span>
-
-
-          <h2 class="section-title">
-
-            展開している<br>
-            プロジェクト。
-
-          </h2>
-
-
-          <p class="section-description">
-            Entry Productionが企画・運営しているプロジェクトです。
-          </p>
-
-        </div>
-
-
-
-        <!--
-          pro/pro.js の情報から
-          プロジェクトを自動生成します
-        -->
-
-        <div
-          class="project-list"
-          id="projectList"
-        ></div>
-
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ========================================
          ENTRY
     ======================================== -->
 
@@ -1825,12 +1553,12 @@
             ABOUT
           </a>
 
-          <a href="#philosophy">
-            PHILOSOPHY
-          </a>
-
           <a href="#projects">
             PROJECTS
+          </a>
+
+          <a href="#philosophy">
+            PHILOSOPHY
           </a>
 
         </div>
@@ -1854,7 +1582,6 @@
 
   <!-- ========================================
        PROJECT DATA
-       pro/pro.js
   ======================================== -->
 
   <script src="pro/pro.js"></script>
@@ -1880,26 +1607,19 @@
     const menuLinks =
       document.querySelectorAll(".menu-list a");
 
+    const menuLabel =
+      menuButton.querySelector(".menu-label");
+
 
     function openMenu() {
 
       menuButton.classList.add("active");
-
       menuOverlay.classList.add("active");
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "メニューを閉じる");
+      document.body.classList.add("menu-open");
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-
-      menuButton.setAttribute(
-        "aria-label",
-        "メニューを閉じる"
-      );
-
-      document.body.classList.add(
-        "menu-open"
-      );
+      menuLabel.textContent = "CLOSE";
 
     }
 
@@ -1907,22 +1627,12 @@
     function closeMenu() {
 
       menuButton.classList.remove("active");
-
       menuOverlay.classList.remove("active");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "メニューを開く");
+      document.body.classList.remove("menu-open");
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuButton.setAttribute(
-        "aria-label",
-        "メニューを開く"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
+      menuLabel.textContent = "MENU";
 
     }
 
@@ -1934,13 +1644,9 @@
         if (
           menuOverlay.classList.contains("active")
         ) {
-
           closeMenu();
-
         } else {
-
           openMenu();
-
         }
 
       }
@@ -1953,9 +1659,7 @@
         link.addEventListener(
           "click",
           function () {
-
             closeMenu();
-
           }
         );
 
@@ -1971,9 +1675,7 @@
           event.key === "Escape" &&
           menuOverlay.classList.contains("active")
         ) {
-
           closeMenu();
-
         }
 
       }
@@ -1997,45 +1699,44 @@
       const card =
         document.createElement("article");
 
+      card.className = "project-card";
 
-      card.className =
-        "project-card";
+      // カラーをCSS変数で渡す
+      if (project.color) {
+        card.style.setProperty(
+          "--project-color",
+          project.color
+        );
+      }
 
 
       /* -------------------------
-         IMAGE
+         右上の正方形画像
       ------------------------- */
+
+      const imageWrap =
+        document.createElement("div");
+
+      imageWrap.className =
+        "project-image-wrap";
+
 
       const image =
         document.createElement("img");
 
-
       image.className =
         "project-image";
-
 
       image.src =
         "pro/" + project.image;
 
-
       image.alt =
         project.name;
-
 
       image.loading =
         "lazy";
 
-
-      /* -------------------------
-         OVERLAY
-      ------------------------- */
-
-      const overlay =
-        document.createElement("div");
-
-
-      overlay.className =
-        "project-overlay";
+      imageWrap.appendChild(image);
 
 
       /* -------------------------
@@ -2045,10 +1746,8 @@
       const number =
         document.createElement("div");
 
-
       number.className =
         "project-number";
-
 
       number.textContent =
         "PROJECT " +
@@ -2062,61 +1761,51 @@
       const content =
         document.createElement("div");
 
-
       content.className =
         "project-content";
 
 
-      /* ジャンル */
-
       const genre =
         document.createElement("span");
 
-
       genre.className =
         "project-type";
-
 
       genre.textContent =
         project.genre;
 
 
-      /* 名前 */
-
       const title =
         document.createElement("h3");
-
 
       title.textContent =
         project.name;
 
 
-      /* 謳い文句 */
-
       const tagline =
         document.createElement("p");
 
-
       tagline.className =
         "project-tagline";
-
 
       tagline.textContent =
         project.tagline;
 
 
-      /* 説明 */
-
       const description =
         document.createElement("p");
-
 
       description.className =
         "project-description";
 
-
       description.textContent =
         project.description;
+
+
+      content.appendChild(genre);
+      content.appendChild(title);
+      content.appendChild(tagline);
+      content.appendChild(description);
 
 
       /* -------------------------
@@ -2131,22 +1820,17 @@
         const link =
           document.createElement("a");
 
-
         link.className =
           "project-link";
-
 
         link.href =
           project.url;
 
-
         link.target =
           "_blank";
 
-
         link.rel =
           "noopener noreferrer";
-
 
         link.innerHTML =
 
@@ -2157,7 +1841,6 @@
 
           "<span class=\"project-link-arrow\">→</span>";
 
-
         content.appendChild(link);
 
       }
@@ -2167,23 +1850,9 @@
          BUILD
       ------------------------- */
 
-      content.appendChild(genre);
-
-      content.appendChild(title);
-
-      content.appendChild(tagline);
-
-      content.appendChild(description);
-
-
-      card.appendChild(image);
-
-      card.appendChild(overlay);
-
+      card.appendChild(imageWrap);
       card.appendChild(number);
-
       card.appendChild(content);
-
 
       return card;
 
@@ -2226,14 +1895,11 @@
         const empty =
           document.createElement("div");
 
-
         empty.className =
           "project-empty";
 
-
         empty.textContent =
           "現在公開されているプロジェクトはありません。";
-
 
         projectList.appendChild(empty);
 
@@ -2250,7 +1916,6 @@
               project,
               index
             );
-
 
           projectList.appendChild(card);
 
