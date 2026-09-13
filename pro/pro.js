@@ -1,3 +1,4 @@
+
 window.projects = [
 
   {
@@ -18,7 +19,7 @@ window.projects = [
     description:
       "知りたい言葉をわかりやすく調べられるWeb辞典サービス。必要な情報を、もっと身近に届けます。",
     image: "kanji.png",
-    url: "https://example.com/",
+    url: "https://plsjoin.github.io/Dic/",
     color: "#2476e8"
   }
 
