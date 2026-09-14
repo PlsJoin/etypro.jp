@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Entry Production | エンプロ</title>
-
   <meta
     name="description"
     content="Entry Production（エンプロ）は、ゲームコミュニティやWebサービスを企画・運営するクリエイティブプロダクションです。"
   >
-
   <style>
-
     :root {
       --blue: #2476e8;
       --blue-light: #eaf3ff;
@@ -23,20 +19,14 @@
       --white: #ffffff;
       --dark: #111827;
     }
-
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-
     html {
       scroll-behavior: smooth;
     }
-
-
     body {
       font-family:
         -apple-system,
@@ -45,44 +35,34 @@
         "Noto Sans JP",
         Arial,
         sans-serif;
-
       color: var(--text);
       background: var(--white);
-
       line-height: 1.8;
-
       overflow-x: hidden;
+      /* さりげないドット模様 */
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(36, 118, 232, 0.06) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-attachment: fixed;
     }
-
-
     body.menu-open {
       overflow: hidden;
     }
-
-
     img {
       max-width: 100%;
       display: block;
     }
-
-
     a {
       color: inherit;
       text-decoration: none;
     }
-
-
     .container {
       width: min(1200px, calc(100% - 48px));
       margin: 0 auto;
     }
-
-
-
     /* ========================================
        HEADER
     ======================================== */
-
     header {
       position: fixed;
       top: 0;
@@ -94,34 +74,24 @@
       box-shadow: none;
       pointer-events: none;
     }
-
-
     .header-inner {
       height: 105px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-
     .logo {
       display: block;
       width: 235px;
       pointer-events: auto;
     }
-
-
     .logo img {
       width: 100%;
       height: auto;
     }
-
-
-
     /* ========================================
-       MENU BUTTON
+       MENU BUTTON（位置・揃え調整）
     ======================================== */
-
     .menu-button {
       position: relative;
       width: 68px;
@@ -134,88 +104,68 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0;
       cursor: pointer;
       pointer-events: auto;
       color: var(--blue);
       z-index: 1100;
-      transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      transition: color 0.25s ease;
     }
-
-
     .menu-button:hover {
-      transform: none;
-      box-shadow: none;
+      color: var(--blue);
     }
-
-
     .menu-lines {
       position: relative;
       width: 28px;
-      height: 18px;
+      height: 14px;
+      flex-shrink: 0;
     }
-
-
     .menu-lines span {
       position: absolute;
       left: 0;
       width: 100%;
       height: 2px;
       border-radius: 2px;
-      background: var(--blue);
+      background: currentColor;
       transition:
         transform 0.3s ease,
         top 0.3s ease;
     }
-
-
     .menu-lines span:first-child {
-      top: 3px;
+      top: 2px;
     }
-
-
     .menu-lines span:last-child {
-      top: 13px;
+      top: 10px;
     }
-
-
     .menu-label {
-      margin-top: 1px;
+      margin-top: 6px;
       font-size: 0.55rem;
       font-weight: 800;
       letter-spacing: 0.12em;
+      line-height: 1;
+      color: currentColor;
     }
-
-
     /* ========================================
        MENU OPEN
     ======================================== */
-
     .menu-button.active .menu-lines span:first-child {
-      top: 8px;
+      top: 6px;
       transform: rotate(45deg);
     }
-
-
     .menu-button.active .menu-lines span:last-child {
-      top: 8px;
+      top: 6px;
       transform: rotate(-45deg);
     }
-
-
     .menu-button.active .menu-label {
       font-size: 0.52rem;
       letter-spacing: 0.08em;
     }
-
-
-
     /* ========================================
        MENU OVERLAY
     ======================================== */
-
     .menu-overlay {
       position: fixed;
       inset: 0;
@@ -228,14 +178,10 @@
         opacity 0.35s ease,
         visibility 0.35s ease;
     }
-
-
     .menu-overlay.active {
       opacity: 1;
       visibility: visible;
     }
-
-
     .menu-inner {
       width: min(900px, calc(100% - 48px));
       height: 100%;
@@ -243,19 +189,13 @@
       display: flex;
       align-items: center;
     }
-
-
     .menu-list {
       list-style: none;
       width: 100%;
     }
-
-
     .menu-list li {
       margin: 18px 0;
     }
-
-
     .menu-list a {
       display: inline-flex;
       align-items: baseline;
@@ -263,9 +203,8 @@
       color: var(--text);
       font-size: clamp(1.5rem, 4vw, 2.4rem);
       font-weight: 800;
-      transition: color 0.25s ease, transform 0.25s ease;
+      transition: color 0.25s ease;
     }
-
     .menu-list a .jp-label {
       font-size: 0.85rem;
       font-weight: 600;
@@ -273,18 +212,12 @@
       letter-spacing: 0.05em;
       transition: color 0.25s ease;
     }
-
-
     .menu-list a:hover {
       color: var(--blue);
-      transform: translateX(6px);
     }
-
     .menu-list a:hover .jp-label {
       color: var(--blue);
     }
-
-
     .menu-close {
       position: absolute;
       top: 28px;
@@ -299,15 +232,13 @@
       background: transparent;
       color: var(--blue);
       cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
+      transition: color 0.2s ease;
     }
-
     .menu-close-icon {
       position: relative;
       width: 28px;
       height: 28px;
     }
-
     .menu-close-icon span {
       position: absolute;
       top: 13px;
@@ -317,27 +248,18 @@
       background: var(--blue);
       border-radius: 2px;
     }
-
     .menu-close-icon span:nth-child(1) {
       transform: rotate(45deg);
     }
-
     .menu-close-icon span:nth-child(2) {
       transform: rotate(-45deg);
     }
-
-
     .menu-close:hover {
       color: var(--blue);
-      transform: rotate(90deg);
     }
-
-
-
     /* ========================================
        HERO
     ======================================== */
-
     .hero {
       position: relative;
       min-height: 100vh;
@@ -352,8 +274,6 @@
           #dceeff 100%
         );
     }
-
-
     .hero::before {
       content: "";
       position: absolute;
@@ -372,8 +292,6 @@
           transparent 70%
         );
     }
-
-
     .hero::after {
       content: "";
       position: absolute;
@@ -384,8 +302,6 @@
       border-radius: 50%;
       background: rgba(36, 118, 232, 0.08);
     }
-
-
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -393,8 +309,6 @@
       margin: 0 auto;
       padding: 150px 0 100px;
     }
-
-
     .hero-en {
       display: inline-block;
       margin-bottom: 24px;
@@ -403,21 +317,15 @@
       font-weight: 800;
       letter-spacing: 0.25em;
     }
-
-
     .hero-title {
       font-size: clamp(3rem, 8vw, 7rem);
       line-height: 1.08;
       font-weight: 900;
       letter-spacing: -0.04em;
     }
-
-
     .hero-title span {
       color: var(--blue);
     }
-
-
     .hero-subtitle {
       margin-top: 28px;
       max-width: 650px;
@@ -426,8 +334,6 @@
       font-weight: 500;
       line-height: 2;
     }
-
-
     .hero-logo-wrap {
       margin-top: 55px;
       display: flex;
@@ -435,14 +341,10 @@
       width: min(620px, 85vw);
       padding: 25px 0;
     }
-
-
     .hero-logo {
       width: 100%;
       height: auto;
     }
-
-
     .hero-scroll {
       position: absolute;
       right: 0;
@@ -456,30 +358,20 @@
       letter-spacing: 0.2em;
       writing-mode: vertical-rl;
     }
-
-
     .hero-scroll span {
       width: 1px;
       height: 70px;
       background: var(--blue);
     }
-
-
-
     /* ========================================
        COMMON
     ======================================== */
-
     section {
       padding: 140px 0;
     }
-
-
     .section-head {
       margin-bottom: 70px;
     }
-
-
     .section-en {
       display: block;
       margin-bottom: 16px;
@@ -488,85 +380,60 @@
       font-weight: 800;
       letter-spacing: 0.22em;
     }
-
-
     .section-title {
       font-size: clamp(2.4rem, 5vw, 4.8rem);
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.04em;
     }
-
-
     .section-description {
       margin-top: 25px;
       max-width: 650px;
       color: var(--muted);
       font-size: 1rem;
     }
-
-
-
     /* ========================================
        ABOUT
     ======================================== */
-
     .about {
-      background: var(--white);
+      background: transparent;
     }
-
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 100px;
       align-items: start;
     }
-
-
     .about-main {
       font-size: clamp(1.3rem, 2.4vw, 2rem);
       font-weight: 700;
       line-height: 1.8;
     }
-
-
     .about-main strong {
       color: var(--blue);
     }
-
-
     .about-side {
       color: var(--muted);
       font-size: 1rem;
     }
-
-
     .about-side p + p {
       margin-top: 28px;
     }
-
-
-
     /* ========================================
        PROJECTS
     ======================================== */
-
     .projects {
-      background: var(--white);
+      background: transparent;
     }
-
     .project-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
-
     .project-card {
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 400px;
       overflow: hidden;
       border-radius: 16px;
       background-color: var(--white);
@@ -575,9 +442,8 @@
         radial-gradient(circle at 10% 90%, color-mix(in srgb, var(--project-color, #2476e8) 10%, transparent) 0%, transparent 40%),
         linear-gradient(135deg, color-mix(in srgb, var(--project-color, #2476e8) 6%, #ffffff), color-mix(in srgb, var(--project-color, #2476e8) 2%, #ffffff));
       border: 1px solid color-mix(in srgb, var(--project-color, #2476e8) 18%, #e6eaf0);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: box-shadow 0.25s ease;
     }
-
     .project-card::before {
       content: "";
       position: absolute;
@@ -589,7 +455,6 @@
       border: 2px solid color-mix(in srgb, var(--project-color, #2476e8) 12%, transparent);
       pointer-events: none;
     }
-
     .project-card::after {
       content: "";
       position: absolute;
@@ -601,37 +466,26 @@
       background: color-mix(in srgb, var(--project-color, #2476e8) 8%, transparent);
       pointer-events: none;
     }
-
     .project-card:hover {
-      transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
     }
-
-    /* 右上の正方形画像 */
+    /* 上部の横長画像エリア */
     .project-image-wrap {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: color-mix(in srgb, var(--project-color, #2476e8) 8%, #f0f4f8);
+      border-bottom: 1px solid color-mix(in srgb, var(--project-color, #2476e8) 12%, #e6eaf0);
       z-index: 2;
     }
-
     .project-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      object-position: center;
+      display: block;
     }
-
-    .project-card:hover .project-image {
-      transform: scale(1.04);
-    }
-
     /* 画像がないときのフォールバック */
     .project-image-fallback {
       width: 100%;
@@ -639,21 +493,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 1.1rem;
       font-weight: 700;
+      letter-spacing: 0.08em;
       color: var(--project-color, var(--blue));
       background: color-mix(in srgb, var(--project-color, #2476e8) 12%, #ffffff);
     }
-
     /* コンテンツ */
     .project-content {
       position: relative;
       z-index: 1;
-      margin-top: auto;
-      padding: 28px 28px 28px;
-      padding-right: 156px;
+      padding: 28px;
     }
-
     .project-type {
       display: block;
       margin-bottom: 10px;
@@ -662,7 +513,6 @@
       letter-spacing: 0.08em;
       color: var(--project-color, var(--blue));
     }
-
     .project-card h3 {
       font-size: clamp(1.5rem, 2.8vw, 2.1rem);
       font-weight: 800;
@@ -670,7 +520,6 @@
       letter-spacing: -0.02em;
       color: var(--text);
     }
-
     .project-tagline {
       margin-top: 8px;
       font-size: 1rem;
@@ -678,14 +527,12 @@
       line-height: 1.5;
       color: var(--text);
     }
-
     .project-description {
       margin-top: 12px;
       font-size: 0.88rem;
       line-height: 1.75;
       color: var(--muted);
     }
-
     /* 公式HPボタン（直角仕様） */
     .project-link {
       display: inline-flex;
@@ -698,19 +545,15 @@
       color: #fff;
       font-size: 0.82rem;
       font-weight: 700;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: opacity 0.2s ease;
     }
-
     .project-link:hover {
       opacity: 0.88;
-      transform: translateY(-1px);
     }
-
     .project-link-arrow {
       font-size: 0.95rem;
       line-height: 1;
     }
-
     .project-empty {
       padding: 72px 20px;
       color: var(--muted);
@@ -718,21 +561,19 @@
       border: 1px dashed var(--line);
       border-radius: 16px;
     }
-
     /* ========================================
        PHILOSOPHY
     ======================================== */
-
     .philosophy {
       background: var(--blue-soft);
+      /* 模様を少し弱めるため上書き */
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(36, 118, 232, 0.05) 1px, transparent 0);
+      background-size: 28px 28px;
     }
-
-
     .philosophy-list {
       border-top: 1px solid var(--line);
     }
-
-
     .philosophy-item {
       display: grid;
       grid-template-columns: 120px 1fr 1fr;
@@ -741,34 +582,24 @@
       padding: 42px 0;
       border-bottom: 1px solid var(--line);
     }
-
-
     .philosophy-number {
       color: var(--blue);
       font-size: 1rem;
       font-weight: 800;
       letter-spacing: 0.1em;
     }
-
-
     .philosophy-title {
       font-size: clamp(1.4rem, 2vw, 2rem);
       font-weight: 800;
       line-height: 1.5;
     }
-
-
     .philosophy-text {
       color: var(--muted);
       font-size: 0.95rem;
     }
-
-
-
     /* ========================================
        ENTRY
     ======================================== */
-
     .entry {
       position: relative;
       overflow: hidden;
@@ -780,8 +611,6 @@
         );
       color: var(--white);
     }
-
-
     .entry::before {
       content: "";
       position: absolute;
@@ -792,8 +621,6 @@
       border: 100px solid rgba(255, 255, 255, 0.08);
       border-radius: 50%;
     }
-
-
     .entry-inner {
       position: relative;
       z-index: 1;
@@ -802,8 +629,6 @@
       justify-content: space-between;
       gap: 50px;
     }
-
-
     .entry-en {
       display: block;
       margin-bottom: 20px;
@@ -812,69 +637,49 @@
       letter-spacing: 0.2em;
       opacity: 0.8;
     }
-
-
     .entry-title {
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.04em;
     }
-
-
     .entry-text {
       max-width: 500px;
       margin-top: 25px;
       opacity: 0.85;
     }
-
-
-
     /* ========================================
        FOOTER
     ======================================== */
-
     footer {
       padding: 70px 0;
       background: #111827;
       color: var(--white);
     }
-
-
     .footer-inner {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 40px;
     }
-
-
     .footer-logo {
       width: 250px;
       filter: brightness(0) invert(1);
       opacity: 0.95;
     }
-
-
     .footer-nav {
       display: flex;
       flex-wrap: wrap;
       gap: 20px 30px;
     }
-
-
     .footer-nav a {
       color: rgba(255, 255, 255, 0.65);
       font-size: 0.8rem;
       transition: color 0.2s ease;
     }
-
-
     .footer-nav a:hover {
       color: #ffffff;
     }
-
-
     .copyright {
       margin-top: 60px;
       padding-top: 25px;
@@ -882,240 +687,155 @@
       color: rgba(255, 255, 255, 0.45);
       font-size: 0.75rem;
     }
-
-
-
     /* ========================================
        RESPONSIVE
     ======================================== */
-
     @media (max-width: 900px) {
-
       .header-inner {
         height: 90px;
       }
-
-
       .logo {
         width: 195px;
       }
-
-
       .menu-button {
         width: 62px;
         height: 62px;
       }
-
-
       .hero {
         min-height: 760px;
       }
-
-
       .hero-inner {
         padding-top: 130px;
       }
-
-
       .hero-scroll {
         display: none;
       }
-
-
       section {
         padding: 100px 0;
       }
-
-
       .about-grid {
         grid-template-columns: 1fr;
         gap: 45px;
       }
-
-
       .philosophy-item {
         grid-template-columns: 70px 1fr;
         gap: 20px;
       }
-
-
       .philosophy-text {
         grid-column: 2;
       }
-
-
       .project-list {
         grid-template-columns: 1fr;
       }
-
-
       .entry-inner {
         flex-direction: column;
         align-items: flex-start;
       }
-
-
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
-
     }
-
-
-
     @media (max-width: 600px) {
-
       .container,
       .hero-inner {
         width: min(100% - 32px, 1200px);
       }
-
-
       .header-inner {
         height: 78px;
       }
-
-
       .logo {
         width: 175px;
       }
-
-
       .menu-button {
         width: 58px;
         height: 58px;
       }
-
-
       .menu-lines {
         width: 26px;
+        height: 13px;
       }
-
-
+      .menu-lines span:first-child {
+        top: 2px;
+      }
+      .menu-lines span:last-child {
+        top: 9px;
+      }
+      .menu-label {
+        margin-top: 5px;
+      }
       .menu-list li {
         margin: 16px 0;
       }
-
-
       .menu-list a {
         font-size: 1.5rem;
       }
-
-
       .menu-close {
         top: 18px;
         right: 18px;
         width: 48px;
         height: 48px;
       }
-
-
       .hero {
         min-height: 700px;
       }
-
-
       .hero-title {
         font-size: 3.3rem;
       }
-
-
       .hero-logo-wrap {
         margin-top: 40px;
       }
-
-
       .section-head {
         margin-bottom: 45px;
       }
-
-
       .section-title {
         font-size: 2.7rem;
       }
-
-
       .philosophy-item {
         grid-template-columns: 1fr;
         gap: 14px;
       }
-
-
       .philosophy-text {
         grid-column: auto;
       }
-
-
       .project-card {
-        min-height: 360px;
         border-radius: 14px;
       }
-
-
       .project-image-wrap {
-        width: 96px;
-        height: 96px;
-        top: 16px;
-        right: 16px;
-        border-radius: 10px;
+        aspect-ratio: 16 / 10;
       }
-
-
       .project-content {
-        padding: 24px 22px 24px;
-        padding-right: 128px;
+        padding: 24px 22px;
       }
-
-
       .project-link {
         padding: 11px 16px;
         font-size: 0.78rem;
         border-radius: 0 !important;
       }
-
-
       .footer-logo {
         width: 210px;
       }
-
     }
-
   </style>
 </head>
-
-
 <body>
-
-
   <!-- ========================================
        HEADER
   ======================================== -->
-
   <header>
-
     <div class="container header-inner">
-
-
       <!-- LOGO -->
-
       <a
         href="#"
         class="logo"
         aria-label="Entry Production トップ"
       >
-
         <img
           src="main.png"
           alt="Entry Production"
         >
-
       </a>
-
-
-
       <!-- MENU BUTTON -->
-
       <button
         class="menu-button"
         id="menuButton"
@@ -1123,34 +843,23 @@
         aria-expanded="false"
         type="button"
       >
-
         <div class="menu-lines">
           <span></span>
           <span></span>
         </div>
-
         <span class="menu-label">
           MENU
         </span>
-
       </button>
-
-
     </div>
-
   </header>
-
-
-
   <!-- ========================================
        MENU
   ======================================== -->
-
   <div
     class="menu-overlay"
     id="menuOverlay"
   >
-
     <button
       class="menu-close"
       id="menuClose"
@@ -1162,558 +871,324 @@
         <span></span>
       </div>
     </button>
-
     <div class="menu-inner">
-
       <ul class="menu-list">
-
         <li>
           <a href="#">
             <span>TOP</span>
             <span class="jp-label">トップ</span>
           </a>
         </li>
-
-
         <li>
           <a href="#about">
             <span>ABOUT</span>
             <span class="jp-label">概要</span>
           </a>
         </li>
-
-
         <li>
           <a href="#projects">
             <span>PROJECTS</span>
             <span class="jp-label">事業内容</span>
           </a>
         </li>
-
-
         <li>
           <a href="#philosophy">
             <span>PHILOSOPHY</span>
             <span class="jp-label">理念</span>
           </a>
         </li>
-
-
         <li>
           <a href="#entry">
             <span>CONTACT</span>
             <span class="jp-label">お問い合わせ</span>
           </a>
         </li>
-
       </ul>
-
     </div>
-
   </div>
-
-
-
   <!-- ========================================
        MAIN
   ======================================== -->
-
   <main>
-
-
     <!-- ========================================
          HERO
     ======================================== -->
-
     <section class="hero">
-
       <div class="hero-inner">
-
-
         <span class="hero-en">
           ENTRY PRODUCTION
         </span>
-
-
         <h1 class="hero-title">
-
           誰もが<br>
-
           <span>
             クリエイティブ
           </span><br>
-
           になれる。
-
         </h1>
-
-
         <p class="hero-subtitle">
-
           ゲーム、Web、コミュニティ。<br>
           新しい「つくる」を、もっと身近に。
-
         </p>
-
-
         <div class="hero-logo-wrap">
-
           <img
             src="main.png"
             alt="Entry Production"
             class="hero-logo"
           >
-
         </div>
-
-
         <div class="hero-scroll">
-
           SCROLL
-
           <span></span>
-
         </div>
-
-
       </div>
-
     </section>
-
-
-
     <!-- ========================================
          ABOUT
     ======================================== -->
-
     <section
       id="about"
       class="about"
     >
-
       <div class="container">
-
-
         <div class="section-head">
-
           <span class="section-en">
             ABOUT
           </span>
-
-
           <h2 class="section-title">
-
             Entry Production<br>
             とは？
-
           </h2>
-
         </div>
-
-
-
         <div class="about-grid">
-
-
           <div class="about-main">
-
             <p>
               誰かがつくった世界に入るだけじゃない。
             </p>
-
-
             <p>
-
               <strong>
                 自分たちで、新しい世界をつくる。
               </strong>
-
             </p>
-
           </div>
-
-
-
           <div class="about-side">
-
             <p>
               Entry Production（エントリープロダクション / エンプロ）は、
               ゲームコミュニティやWebサービスを中心に、
               さまざまなクリエイティブな企画・運営を行うプロダクションです。
             </p>
-
-
             <p>
               「Entry」という名前には、
               誰もが気軽に新しい世界へ足を踏み入れられる場所を
               つくりたいという想いが込められています。
             </p>
-
-
             <p>
               経験や技術の差に関係なく、
               アイデアを形にできる環境をつくる。
               それがEntry Productionです。
             </p>
-
           </div>
-
-
         </div>
-
       </div>
-
     </section>
-
-
-
     <!-- ========================================
          PROJECTS
     ======================================== -->
-
     <section
       id="projects"
       class="projects"
     >
-
       <div class="container">
-
-
         <div class="section-head">
-
           <span class="section-en">
             PROJECTS
           </span>
-
-
           <h2 class="section-title">
-
             展開している<br>
             プロジェクト。
-
           </h2>
-
-
           <p class="section-description">
             Entry Productionが企画・運営しているプロジェクトです。
           </p>
-
         </div>
-
-
-
         <div
           class="project-list"
           id="projectList"
         ></div>
-
-
       </div>
-
     </section>
-
-
-
     <!-- ========================================
          PHILOSOPHY
     ======================================== -->
-
     <section
       id="philosophy"
       class="philosophy"
     >
-
       <div class="container">
-
-
         <div class="section-head">
-
           <span class="section-en">
             PHILOSOPHY
           </span>
-
-
           <h2 class="section-title">
-
             私たちが<br>
             大切にしていること。
-
           </h2>
-
         </div>
-
-
-
         <div class="philosophy-list">
-
-
           <article class="philosophy-item">
-
             <div class="philosophy-number">
               01
             </div>
-
-
             <h3 class="philosophy-title">
               誰もがクリエイティブになれる
             </h3>
-
-
             <p class="philosophy-text">
               特別な才能や経験がなくても、
               誰もが自分のアイデアを形にできる。
               その最初の一歩を支える環境をつくります。
             </p>
-
           </article>
-
-
-
           <article class="philosophy-item">
-
             <div class="philosophy-number">
               02
             </div>
-
-
             <h3 class="philosophy-title">
               気軽に入れる場所をつくる
             </h3>
-
-
             <p class="philosophy-text">
               難しい手続きや高いハードルをできるだけ減らし、
               「やってみたい」と思った瞬間に
               新しいことへ挑戦できる場所を目指します。
             </p>
-
           </article>
-
-
-
           <article class="philosophy-item">
-
             <div class="philosophy-number">
               03
             </div>
-
-
             <h3 class="philosophy-title">
               安心できる場を守る
             </h3>
-
-
             <p class="philosophy-text">
               誰もが安心して参加し、
               創作や交流を楽しめるように。
               健全で居心地のよいコミュニティを大切にします。
             </p>
-
           </article>
-
-
-
           <article class="philosophy-item">
-
             <div class="philosophy-number">
               04
             </div>
-
-
             <h3 class="philosophy-title">
               自分のペースを尊重する
             </h3>
-
-
             <p class="philosophy-text">
               全員が同じスピードで進む必要はありません。
               一人ひとりが自分らしい形で
               クリエイティブを楽しめる環境を目指します。
             </p>
-
           </article>
-
-
         </div>
-
       </div>
-
     </section>
-
-
-
     <!-- ========================================
          ENTRY
     ======================================== -->
-
     <section
       class="entry"
       id="entry"
     >
-
       <div class="container entry-inner">
-
-
         <div>
-
           <span class="entry-en">
             ENTRY INTO THE NEXT
           </span>
-
-
           <h2 class="entry-title">
-
             次の一歩を、<br>
             もっと自由に。
-
           </h2>
-
         </div>
-
-
         <p class="entry-text">
-
           Entry Productionは、
           これからも新しいアイデアとクリエイティブを通して、
           誰かが「やってみたい」と思える
           新しい入口をつくっていきます。
-
         </p>
-
-
       </div>
-
     </section>
-
-
   </main>
-
-
-
   <!-- ========================================
        FOOTER
   ======================================== -->
-
   <footer>
-
     <div class="container">
-
-
       <div class="footer-inner">
-
-
         <img
           src="main.png"
           alt="Entry Production"
           class="footer-logo"
         >
-
-
         <div class="footer-nav">
-
           <a href="#about">
             ABOUT
           </a>
-
           <a href="#projects">
             PROJECTS
           </a>
-
           <a href="#philosophy">
             PHILOSOPHY
           </a>
-
         </div>
-
-
       </div>
-
-
       <div class="copyright">
-
         © 2026 Entry Production.
-
       </div>
-
-
     </div>
-
   </footer>
-
-
-
   <!-- ========================================
        PROJECT DATA
   ======================================== -->
-
   <script src="pro/pro.js"></script>
-
-
-
   <!-- ========================================
        MENU + PROJECT SYSTEM
   ======================================== -->
-
   <script>
-
     /* ========================================
        MENU SYSTEM
     ======================================== */
-
     const menuButton =
       document.getElementById("menuButton");
-
     const menuOverlay =
       document.getElementById("menuOverlay");
-
     const menuClose =
       document.getElementById("menuClose");
-
     const menuLinks =
       document.querySelectorAll(".menu-list a");
-
     const menuLabel =
       menuButton.querySelector(".menu-label");
-
-
     function openMenu() {
-
       menuButton.classList.add("active");
       menuOverlay.classList.add("active");
       menuButton.setAttribute("aria-expanded", "true");
       menuButton.setAttribute("aria-label", "メニューを閉じる");
       document.body.classList.add("menu-open");
-
       menuLabel.textContent = "CLOSE";
-
     }
-
-
     function closeMenu() {
-
       menuButton.classList.remove("active");
       menuOverlay.classList.remove("active");
       menuButton.setAttribute("aria-expanded", "false");
       menuButton.setAttribute("aria-label", "メニューを開く");
       document.body.classList.remove("menu-open");
-
       menuLabel.textContent = "MENU";
-
     }
-
-
     menuClose.addEventListener(
       "click",
       function () {
         closeMenu();
       }
     );
-
-
     menuButton.addEventListener(
       "click",
       function () {
-
         if (
           menuOverlay.classList.contains("active")
         ) {
@@ -1721,104 +1196,75 @@
         } else {
           openMenu();
         }
-
       }
     );
-
-
     menuLinks.forEach(
       function (link) {
-
         link.addEventListener(
           "click",
           function () {
             closeMenu();
           }
         );
-
       }
     );
-
-
     document.addEventListener(
       "keydown",
       function (event) {
-
         if (
           event.key === "Escape" &&
           menuOverlay.classList.contains("active")
         ) {
           closeMenu();
         }
-
       }
     );
-
-
-
     /* ========================================
        PROJECT SYSTEM
     ======================================== */
-
     const projectList =
       document.getElementById("projectList");
-
-
     function createProjectCard(project, index) {
       const card = document.createElement("article");
       card.className = "project-card";
-
       if (project.color) {
         card.style.setProperty("--project-color", project.color);
       }
-
-      // 右上画像
+      // 上部の横長画像
       const imageWrap = document.createElement("div");
       imageWrap.className = "project-image-wrap";
-
       const image = document.createElement("img");
       image.className = "project-image";
       image.src = "pro/" + project.image;
       image.alt = project.name;
       image.loading = "lazy";
-
       // 画像が無いときのフォールバック
       image.onerror = function () {
         image.remove();
-
         const fallback = document.createElement("div");
         fallback.className = "project-image-fallback";
-        fallback.textContent = project.name.slice(0, 2);
-
+        fallback.textContent = project.name;
         imageWrap.appendChild(fallback);
       };
-
       imageWrap.appendChild(image);
-
       // コンテンツ
       const content = document.createElement("div");
       content.className = "project-content";
-
       const genre = document.createElement("span");
       genre.className = "project-type";
       genre.textContent = project.genre;
-
       const title = document.createElement("h3");
       title.textContent = project.name;
-
       const tagline = document.createElement("p");
       tagline.className = "project-tagline";
       tagline.textContent = project.tagline;
-
       const description = document.createElement("p");
       description.className = "project-description";
       description.textContent = project.description;
-
       content.appendChild(genre);
       content.appendChild(title);
       content.appendChild(tagline);
       content.appendChild(description);
-
       // 公式リンク（角四角）
       if (project.url && project.url.trim() !== "") {
         const link = document.createElement("a");
@@ -1826,92 +1272,59 @@
         link.href = project.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-
         link.innerHTML =
           "<span>" +
           escapeHTML(project.name) +
           "の公式ホームページへ</span>" +
           '<span class="project-link-arrow">→</span>';
-
         content.appendChild(link);
       }
-
       card.appendChild(imageWrap);
       card.appendChild(content);
-
       return card;
     }
-
-
     /* ========================================
        HTML ESCAPE
     ======================================== */
-
     function escapeHTML(value) {
-
       return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
     }
-
-
-
     /* ========================================
        LOAD PROJECTS
     ======================================== */
-
     function loadProjects() {
-
       projectList.innerHTML = "";
-
-
       if (
         !window.projects ||
         !Array.isArray(window.projects) ||
         window.projects.length === 0
       ) {
-
         const empty =
           document.createElement("div");
-
         empty.className =
           "project-empty";
-
         empty.textContent =
           "現在公開されているプロジェクトはありません。";
-
         projectList.appendChild(empty);
-
         return;
-
       }
-
-
       window.projects.forEach(
         function (project, index) {
-
           const card =
             createProjectCard(
               project,
               index
             );
-
           projectList.appendChild(card);
-
         }
       );
-
     }
-
-
     loadProjects();
-
   </script>
-
-
 </body>
 </html>
