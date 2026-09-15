@@ -6,7 +6,7 @@ window.projects = [
     genre: "GAME COMMUNITY",
     tagline: "みんなでつくる、ひとつの世界。",
     description:
-      "Minecraft統合版を中心とした参加型ゲームコミュニティ。建築、冒険、交流など、プレイヤーそれぞれの楽しみ方を大切にしています。",
+      "マイクラ統合版で展開されている【ドル鯖】はフレンド参加型の鯖です。総参加８００人越えで多彩で高クオリティなゲームが楽しめます！",
     image: "doldoserver.png",
     url: "https://plsjoin.github.io/DolSaba/index.html",
     color: "#22c55e"
